@@ -2,6 +2,7 @@ from ctypes import alignment
 from tkinter import Tk, PhotoImage, Frame, Button, CENTER
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import SUCCESS, OUTLINE
+import json
 
 from pages.root.splash.main import Splash
 from pages.root.planet.main import Planet
@@ -16,13 +17,17 @@ class App(Tk):
     def __init__(self):
         super().__init__()
 
-        style = ttk.Style("darkly")
+        style = ttk.Style("flatly")
         
         ## Setting up Initial Things
         self.title("POMM")
-        self.geometry("768x624")
+        self.geometry("640x600")
         self.resizable(True, True)
         self.iconphoto(False, PhotoImage(file="assets/pomm_logo.png"))
+
+        ## Load config
+        with open('assets/configuration.json','r') as config:
+            self.config = json.load(config)
 
         ## Creating a container
         container = Frame(self)
@@ -32,7 +37,6 @@ class App(Tk):
 
         headerBar = HeaderBar(self)
         headerBar.place(relx=0, rely=0, relwidth=1.0, height=headH)  
-
 
         ## Initialize Frames
         self.frames = {}

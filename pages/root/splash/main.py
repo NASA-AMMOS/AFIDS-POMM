@@ -22,3 +22,6 @@ class Splash(Frame):
             bootstyle=(SUCCESS, OUTLINE)
         )
         button.place(y=120, relx=.5, rely=.30,anchor=CENTER)
+        
+    def setPage(page):
+        print('splashDRAW', page)

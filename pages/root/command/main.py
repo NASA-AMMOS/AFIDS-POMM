@@ -10,49 +10,76 @@ class Command(Frame):
         Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
 
-        label = ttk.Label(self, text="Choose an Operation", font=('Segoe UI', '12') )
-        label.place(y=30, relx=.5, rely=0, anchor=CENTER)
+        label = ttk.Label(self, text="Choose an Operation", font=('Segoe UI', '14') )
+        label.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
-        labelColor = '#151515'
-        labelColorActive = '#02b875'
-        cardW = 200
-        cardH = 180
-        imageH = 50
-        cardS = 24
+        cardH = 128
+        imageH = 96
+        cardS = 16
 
-        COMMANDS = [('Map Project', 'project'), ('Co-Registration', 'coreg'), ('Mosaic', 'mosaic')]
+        COMMANDS = [
+            ('Map Project', 'project', 'MapProject', 'Transform a PDS image to a GIS/Map Format', 'Copy a raw PDS image into your local directory.'),
+            ('Co-Registration', 'coreg', 'CoRegister', 'Stack Two Map Orbital Images', 'Put your two input Map-Projected images in one local directory.'),
+            ('Mosaic', 'mosaic', 'Mosaic', 'Combines Several Map-Projected Orbital Images', 'Put all your input Map-Projected images in one local directory.')
+        ]
 
         self.cards = {}
 
-        for index, (text, val) in enumerate(COMMANDS):
-            card = Frame(self)
-            print(1 / len(COMMANDS))
-            card.place(y=100, x=(cardW * index + (cardS * (index + 1))), relwidth=(1 / len(COMMANDS)), relheight=0.9)
+        hlbg = "#ffffff"
+        hlbgA = "#18bc9c"
+        hlth = 3
+        hlthA = 3 
+
+        for index, (text, val, page, desc, req) in enumerate(COMMANDS):
+            card = Frame(self, highlightbackground=hlbg, highlightthickness=hlth)
+            card.place(y=132 + (index * cardH) + (index * cardS), relx=.5, relwidth=0.9, height=cardH, anchor=CENTER)
+
+            # Event Functions            
+            def enter_card(index):
+                return lambda e: self.cards[index].config(highlightbackground=hlbgA, highlightthickness=hlthA)
+            def leave_card(index):
+                return lambda e: self.cards[index].config(highlightbackground=hlbg, highlightthickness=hlth)
+            def select(page):
+                return lambda e: parent.show_frame(page)
 
             img = PhotoImage(file="assets/" + val + ".png")
             button = Button(
                 card, 
                 image=img,
-                command=lambda: parent.show_frame('Planet')
+                command=select(page)
             )
             button.img = img
-            button.place(y=0, x=0, width=cardW, height=imageH)
+            button.configure(background='#FFFFFF')
+            button.place(y=16, x=16, width=imageH, height=imageH)
 
-            label = ttk.Button(
+            label = ttk.Label(
                 card, 
-                text=text, 
-                command=lambda: parent.show_frame('Splash'),
-                bootstyle=(SUCCESS, OUTLINE)
+                text=text,
+                font=('Segoe UI', '16')
             )
-            label.place(y=180, relx=.5, rely=0, relwidth=0.3, anchor=CENTER)
-            self.cards[id] =  button
+            label.place(y=20, x=128)
+            label2 = ttk.Label(
+                card, 
+                text=desc,
+                font=('Segoe UI', '12')
+            )
+            label2.place(y=50, x=128)
+            label3 = ttk.Label(
+                card, 
+                text=req,
+                font=('Segoe UI', '10')
+            )
+            label3.place(y=74, x=128)
 
-        # Continue
-        button = ttk.Button(
-            self, 
-            text="Continue", 
-            command=lambda: parent.show_frame('Command'),
-            bootstyle=(SUCCESS, OUTLINE)
-        )
-        # 30 for headH
-        button.pack(side=BOTTOM, padx=12, pady=42, anchor=E)
+            self.cards[index] = card
+            
+            # Events
+            self.cards[index].bind("<Enter>", enter_card(index))
+            self.cards[index].bind("<Leave>", leave_card(index))
+            self.cards[index].bind("<Button-1>", select(page))
+            label.bind("<Button-1>", select(page))
+            label2.bind("<Button-1>", select(page))
+            label3.bind("<Button-1>", select(page))
+
+    def setPage(page):
+        print('splashDRAW', page)
