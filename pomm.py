@@ -55,7 +55,7 @@ class App(Tk):
             self.frames[p] = frame
             frame.place(relx=0, rely=0, relwidth=1.0, relheight=1.0, y=headH)    
            
-        self.show_frame('Splash')
+        self.show_frame('MapProject')
 
     def show_frame(self, cont):
         frame = self.frames[cont]

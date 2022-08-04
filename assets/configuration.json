@@ -15,8 +15,14 @@
             "help": "No help",
             "type": "radiolist",
             "options": {
-              "values": [
+              "items": [
                 { "name": "Mars MRO CTX", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX1", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX2", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX3", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX4", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX5", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX6", "value": "ctx", "planet": "Mars" },
                 {
                   "name": "Mars MRO HiRISE",
                   "value": "hirise",
@@ -27,7 +33,8 @@
           },
           {
             "title": "Need Help Finding PDS Images for Projection?",
-            "help": "No help"
+            "help": "No help",
+            "type": "title"
           },
           {
             "title": "FULL Local Directory Path to Input PDS Images",
@@ -37,7 +44,10 @@
           {
             "title": "PDS Input Image Filename",
             "help": "No help",
-            "type": "filename"
+            "type": "filename",
+            "options": {
+              "extensions": [{ "name": "PDS Images", "value": "*.IMG" }]
+            }
           },
           {
             "title": "PREFIX Filename for Output Products",
@@ -63,7 +73,7 @@
             "help": "No help",
             "type": "radiolist",
             "options": {
-              "values": [
+              "items": [
                 { "name": "Latitude-Longitude", "value": "latitude-longitude" },
                 {
                   "name": "Equidistant",
@@ -86,7 +96,7 @@
             "help": "No help",
             "type": "text",
             "options": {
-              "values": [
+              "items": [
                 { "name": "hiband", "value": "1" },
                 { "name": "pathout", "value": "finalmos" }
               ]

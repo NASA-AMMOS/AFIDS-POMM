@@ -27,8 +27,8 @@ class Command(Frame):
 
         hlbg = "#ffffff"
         hlbgA = "#18bc9c"
-        hlth = 3
-        hlthA = 3 
+        hlth = 2
+        hlthA = 2
 
         for index, (text, val, page, desc, req) in enumerate(COMMANDS):
             card = Frame(self, highlightbackground=hlbg, highlightthickness=hlth)
