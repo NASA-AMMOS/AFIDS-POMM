@@ -15,6 +15,27 @@ from pages.commands.mosaic.main import Mosaic
 
 headH = 30
 
+# This is the DPI of the computer you're making/testing the script on.
+ORIGINAL_DPI = 96.09458128078816
+
+
+def get_dpi():
+    screen = Tk()
+    current_dpi = screen.winfo_fpixels('1i')
+    screen.destroy()
+    print(current_dpi)
+    return current_dpi
+
+
+# Now this is the appropriate scale factor you were mentioning.
+SCALE = get_dpi()/ORIGINAL_DPI
+
+# Now every time you use a dimension in pixels, replace it with scaled(*pixel dimension*)
+
+
+def scaled(original_width):
+    return round(original_width * SCALE)
+
 
 class App(Tk):
     def __init__(self):
@@ -28,7 +49,7 @@ class App(Tk):
 
         # Setting up Initial Things
         self.title("POMM")
-        self.geometry("700x700")
+        self.geometry(f'{scaled(700)}x{scaled(700)}')
         self.resizable(True, True)
         self.iconphoto(False, PhotoImage(file="assets/pomm_logo.png"))
 
