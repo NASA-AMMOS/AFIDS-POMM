@@ -1,14 +1,15 @@
 from tkinter import Button, NE, messagebox
 import ttkbootstrap as ttk
 
+
 def Title(self, component, startY):
     headH = 30
-    
-    label = ttk.Label(self, text=component['title'], font=('Segoe UI', '12') )
-    label.place(y=startY, relx=0.1)
+
+    label = ttk.Label(self, text=component['title'], font=('Segoe UI', '12'))
+    label.place(y=startY, relx=0.2)
 
     buttonHelp = Button(
-        self, 
+        self,
         image=self.helpIcon,
         command=lambda: messagebox.showinfo('POMM Help', component['help']),
         width=headH,
@@ -20,5 +21,3 @@ def Title(self, component, startY):
     startY = startY + 32
 
     return startY
-
-        

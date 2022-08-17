@@ -11,18 +11,19 @@
       {
         "components": [
           {
+            "param": "sensor",
             "title": "Orbital Spacecraft Sensor",
             "help": "No help",
             "type": "radiolist",
             "options": {
               "items": [
                 { "name": "Mars MRO CTX", "value": "ctx", "planet": "Mars" },
-                { "name": "Mars MRO CTX1", "value": "ctx", "planet": "Mars" },
-                { "name": "Mars MRO CTX2", "value": "ctx", "planet": "Mars" },
-                { "name": "Mars MRO CTX3", "value": "ctx", "planet": "Mars" },
-                { "name": "Mars MRO CTX4", "value": "ctx", "planet": "Mars" },
-                { "name": "Mars MRO CTX5", "value": "ctx", "planet": "Mars" },
-                { "name": "Mars MRO CTX6", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX1", "value": "ctx1", "planet": "Mars" },
+                { "name": "Mars MRO CTX2", "value": "ctx2", "planet": "Mars" },
+                { "name": "Mars MRO CTX3", "value": "ctx3", "planet": "Mars" },
+                { "name": "Mars MRO CTX4", "value": "ctx4", "planet": "Mars" },
+                { "name": "Mars MRO CTX5", "value": "ctx5", "planet": "Mars" },
+                { "name": "Mars MRO CTX6", "value": "ctx6", "planet": "Mars" },
                 {
                   "name": "Mars MRO HiRISE",
                   "value": "hirise",
@@ -37,11 +38,13 @@
             "type": "title"
           },
           {
+            "param": "rawimg",
             "title": "FULL Local Directory Path to Input PDS Images",
             "help": "No help",
             "type": "filepath"
           },
           {
+            "param": "pathraw",
             "title": "PDS Input Image Filename",
             "help": "No help",
             "type": "filename",
@@ -50,11 +53,13 @@
             }
           },
           {
+            "param": "outpre",
             "title": "PREFIX Filename for Output Products",
             "help": "No help",
             "type": "string"
           },
           {
+            "param": "mpix",
             "title": "OUTPUT PIXEL SIZE (meters/pixel)",
             "help": "No help",
             "type": "number"
@@ -64,11 +69,13 @@
       {
         "components": [
           {
+            "param": "demimg",
             "title": "FULL Directory Path/Filename to Encompassing DEM",
             "help": "No help",
             "type": "filepathname"
           },
           {
+            "param": "mapref",
             "title": "Output Map Projections",
             "help": "No help",
             "type": "radiolist",
@@ -87,18 +94,36 @@
             }
           },
           {
+            "param": "debug",
             "title": "Keep Temporary Files",
             "help": "No help",
-            "type": "boolean"
+            "type": "boolean",
+            "options": {
+              "trueText": "Yes (1)",
+              "falseText": "No (0)",
+              "default": false
+            }
           },
           {
             "title": "Other Default Parameters",
             "help": "No help",
-            "type": "text",
+            "type": "multitext",
             "options": {
               "items": [
-                { "name": "hiband", "value": "1" },
-                { "name": "pathout", "value": "finalmos" }
+                { "param": "hiband", "value": "1" },
+                { "param": "pathout", "value": "finalmos" },
+                { "param": "minh", "value": -8528 },
+                { "param": "maxh", "value": 21266 },
+                {
+                  "param": "mdeg",
+                  "value": 59525.0,
+                  "comment": "Mars Meters/Degree"
+                },
+                {
+                  "param": "ldeg",
+                  "value": 30322.2,
+                  "comment": "Luna Meters/Degree"
+                }
               ]
             }
           }
@@ -106,6 +131,77 @@
       }
     ]
   },
-  "CoRegister": {},
-  "Mosaic": {}
+  "CoRegister": {
+    "description": "",
+    "help": "",
+    "pages": [
+      {
+        "components": [
+          {
+            "param": "refimg",
+            "title": "MASTER Image Full Path/Filename",
+            "help": "No help",
+            "type": "filepathname"
+          },
+          {
+            "param": "secimg",
+            "title": "SECONDARY Full Path/Filename (Image to be Stacked)",
+            "help": "No help",
+            "type": "filepathname"
+          },
+          {
+            "param": "outpre",
+            "title": "PREFIX Filename for Output Products",
+            "help": "No help",
+            "type": "string",
+            "options": {
+              "forbid": [" "],
+              "maxLength": 30
+            }
+          },
+
+          {
+            "param": "debug",
+            "title": "Keep Temporary Files",
+            "help": "No help",
+            "type": "boolean",
+            "options": {
+              "trueText": "Yes (1)",
+              "falseText": "No (0)",
+              "default": false
+            }
+          },
+          {
+            "title": "Other Default Parameters",
+            "help": "No help",
+            "type": "multitext",
+            "options": {
+              "items": [
+                { "param": "pathout", "value": "finalmos" },
+                { "param": "maxerr", "value": 1.0 },
+                { "param": "fftgrd", "value": 48 },
+                {
+                  "param": "fftmag",
+                  "value": 4
+                },
+                {
+                  "param": "magmin",
+                  "value": 22
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Mosaic": {
+    "description": "",
+    "help": "",
+    "pages": [
+      {
+        "components": []
+      }
+    ]
+  }
 }

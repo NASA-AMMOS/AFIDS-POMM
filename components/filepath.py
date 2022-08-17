@@ -2,31 +2,42 @@ import os
 from tkinter import filedialog, Button, CENTER, W, NE, NW, N, StringVar
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import PRIMARY, OUTLINE
-from components.title import Title  
+from components.title import Title
+from components.param import Param
 
-def FilePath(self, component, startY):
+
+def FilePath(self, component, startY, parent, command):
     startY = Title(self, component, startY)
+
+    H = 28
+
+    if 'param' in component:
+        Param(self, component['param'], startY + (H/2))
 
     pathValue = StringVar()
     pathValue.set('')
+
+    def setState(self, *args):
+        parent.state.set_state(command, component['param'], pathValue.get())
+    pathValue.trace('w', setState)
+
     entry = ttk.Entry(self, bootstyle="secondary", textvariable=pathValue)
-    entry.place(y=startY, relx=0.1, relwidth=0.6)
+    entry.place(y=startY, relx=0.2, relwidth=0.6)
 
     def browseDirectory():
         return filedialog.askdirectory(
             initialdir=os.getcwd(),
-            title="POMM - " + component['title'] +" - Select A Directory"
+            title="POMM - " + component['title'] + " - Select A Directory"
         )
 
     browseButton = ttk.Button(
-        self, 
-        text="Browse", 
+        self,
+        text="Browse",
         command=lambda: pathValue.set(browseDirectory()),
         bootstyle=(PRIMARY)
     )
-    browseButton.place(y=startY, relx=0.7, relwidth=0.2)
+    browseButton.place(y=startY, relx=0.8, relwidth=0.1)
 
-    startY = startY + 28
+    startY = startY + H
 
     return startY
-

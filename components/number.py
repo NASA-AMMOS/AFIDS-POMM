@@ -1,13 +1,25 @@
 from tkinter import Button, CENTER, W, NE, NW, N, StringVar
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import PRIMARY, OUTLINE
-from components.title import Title  
+from components.title import Title
+from components.param import Param
 
-def Number(self, component, startY):
+
+def Number(self, component, startY, parent, command):
     startY = Title(self, component, startY)
+
+    H = 28
+
+    if 'param' in component:
+        Param(self, component['param'], startY + (H/2))
 
     numberValue = StringVar()
     numberValue.set('')
+
+    def setState(self, *args):
+        parent.state.set_state(
+            command, component['param'], float(numberValue.get()))
+    numberValue.trace('w', setState)
 
     def validate(action, index, value_if_allowed):
         if value_if_allowed:
@@ -20,10 +32,10 @@ def Number(self, component, startY):
             return True
 
     vcmd = (self.register(validate), '%d', '%i', '%P')
-    entry = ttk.Entry(self, bootstyle="secondary", textvariable=numberValue, validate='key', validatecommand=vcmd)
-    entry.place(y=startY, relx=0.1, relwidth=0.8)
+    entry = ttk.Entry(self, bootstyle="secondary",
+                      textvariable=numberValue, validate='key', validatecommand=vcmd)
+    entry.place(y=startY, relx=0.2, relwidth=0.7)
 
-    startY = startY + 28
+    startY = startY + H
 
     return startY
-
