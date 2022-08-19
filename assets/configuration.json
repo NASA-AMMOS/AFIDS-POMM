@@ -13,7 +13,7 @@
           {
             "param": "sensor",
             "title": "Orbital Spacecraft Sensor",
-            "help": "No help",
+            "help": "mapproject",
             "type": "radiolist",
             "options": {
               "items": [
@@ -34,19 +34,16 @@
           },
           {
             "title": "Need Help Finding PDS Images for Projection?",
-            "help": "No help",
             "type": "title"
           },
           {
             "param": "rawimg",
             "title": "FULL Local Directory Path to Input PDS Images",
-            "help": "No help",
             "type": "filepath"
           },
           {
             "param": "pathraw",
             "title": "PDS Input Image Filename",
-            "help": "No help",
             "type": "filename",
             "options": {
               "extensions": [{ "name": "PDS Images", "value": "*.IMG" }]
@@ -55,13 +52,11 @@
           {
             "param": "outpre",
             "title": "PREFIX Filename for Output Products",
-            "help": "No help",
             "type": "string"
           },
           {
             "param": "mpix",
             "title": "OUTPUT PIXEL SIZE (meters/pixel)",
-            "help": "No help",
             "type": "number"
           }
         ]
@@ -71,13 +66,11 @@
           {
             "param": "demimg",
             "title": "FULL Directory Path/Filename to Encompassing DEM",
-            "help": "No help",
             "type": "filepathname"
           },
           {
             "param": "mapref",
             "title": "Output Map Projections",
-            "help": "No help",
             "type": "radiolist",
             "options": {
               "items": [
@@ -96,7 +89,6 @@
           {
             "param": "debug",
             "title": "Keep Temporary Files",
-            "help": "No help",
             "type": "boolean",
             "options": {
               "trueText": "Yes (1)",
@@ -106,7 +98,6 @@
           },
           {
             "title": "Other Default Parameters",
-            "help": "No help",
             "type": "multitext",
             "options": {
               "items": [
@@ -140,30 +131,25 @@
           {
             "param": "refimg",
             "title": "MASTER Image Full Path/Filename",
-            "help": "No help",
             "type": "filepathname"
           },
           {
             "param": "secimg",
             "title": "SECONDARY Full Path/Filename (Image to be Stacked)",
-            "help": "No help",
             "type": "filepathname"
           },
           {
             "param": "outpre",
             "title": "PREFIX Filename for Output Products",
-            "help": "No help",
             "type": "string",
             "options": {
               "forbid": [" "],
               "maxLength": 30
             }
           },
-
           {
             "param": "debug",
             "title": "Keep Temporary Files",
-            "help": "No help",
             "type": "boolean",
             "options": {
               "trueText": "Yes (1)",
@@ -173,7 +159,6 @@
           },
           {
             "title": "Other Default Parameters",
-            "help": "No help",
             "type": "multitext",
             "options": {
               "items": [
@@ -200,7 +185,166 @@
     "help": "",
     "pages": [
       {
-        "components": []
+        "components": [
+          {
+            "title": "Need Help Finding Map Projected Images?",
+            "help": "mosaic-finding",
+            "type": "title"
+          },
+          {
+            "param": "pathraw",
+            "title": "FULL PATH to Directory of ALL Input Map Images",
+            "help": "mosaic-pathraw",
+            "type": "filepath"
+          },
+          {
+            "param": "outpre",
+            "title": "PREFIX Filename for Output Products",
+            "help": "mosaic-outpre",
+            "type": "string",
+            "options": {
+              "forbid": [" "],
+              "maxLength": 30
+            }
+          },
+          {
+            "param": "mpix",
+            "title": "OUTPUT PIXEL SIZE (meters/pixel)",
+            "help": "mosaic-mpix",
+            "type": "number"
+          },
+          {
+            "param": "matchbase",
+            "title": "MATCH Mosaic to an existing orthobase?",
+            "type": "boolean",
+            "options": {
+              "trueText": "Yes (1)",
+              "falseText": "No (0)",
+              "default": false
+            }
+          },
+          {
+            "param": "lsat",
+            "title": "IF Yes, Specifiy Complete path/directory/filename",
+            "type": "filepathname",
+            "indent": true
+          },
+          {
+            "param": "coverref",
+            "title": "Output Projection Reference (Use this Image's Projection)",
+            "type": "boolean",
+            "options": {
+              "trueText": "Yes (1)",
+              "falseText": "No (0)",
+              "default": false
+            }
+          },
+          {
+            "param": "refmap",
+            "title": "IF Yes, Specifiy Complete path/directory/filename",
+            "type": "filepathname",
+            "indent": true
+          }
+        ]
+      },
+
+      {
+        "components": [
+          {
+            "param": "imgchk",
+            "title": "OVERRIDE Image Verification Warning?",
+            "type": "boolean",
+            "options": {
+              "trueText": "Yes (1)",
+              "falseText": "No (0)",
+              "default": false
+            }
+          },
+          {
+            "param": "debug",
+            "title": "Keep Temporary/Intermediate Files?",
+            "type": "boolean",
+            "options": {
+              "trueText": "Yes (1)",
+              "falseText": "No (0)",
+              "default": false
+            }
+          },
+          {
+            "title": "Other Default Parameters",
+            "type": "multitext",
+            "options": {
+              "items": [
+                { "param": "unique", "value": "JOB1_" },
+                { "param": "pathxy", "value": "xydir" },
+                { "param": "pathout", "value": "finalmos" },
+                {
+                  "param": "topo",
+                  "value": "opt/afids/data/vdev/etop02nobath.hlf",
+                  "comment": "Earth Land/Mask with positive elevations 1-30000m"
+                },
+                {
+                  "param": "deltazthresh2",
+                  "value": 100.0
+                },
+                { "param": "edgexyth", "value": 70.0 },
+                { "param": "minnumzval", "value": 4 },
+                { "param": "waterthresh", "value": 5 },
+                { "param": "watercount", "value": 12 },
+                { "param": "getzvalwin", "value": 5 },
+                { "param": "mooreopt", "value": 9.0 },
+                { "param": "nah", "value": 1000 },
+                { "param": "nav", "value": 1000 },
+                { "param": "mars_gridspace", "value": 0.004 },
+                {
+                  "param": "marslatlon",
+                  "value": "/data/library/projdef/mars_geographic.prj"
+                },
+                { "param": "mdeg", "value": 59525.0 },
+                { "param": "earth_gridspace", "value": 0.004 },
+                {
+                  "param": "earthlatlon",
+                  "value": "/data/library/projdef/earth_geographic.prj"
+                },
+                { "param": "edeg", "value": 108000.0 },
+                { "param": "luna_gridspace", "value": "0.004" },
+                {
+                  "param": "lunalatlon",
+                  "value": "/data/library/projdef/luna_geographic.prj"
+                },
+                { "param": "ldeg", "value": 30322.2 }
+              ]
+            }
+          },
+          {
+            "title": "LAT/LON Output Sub-Area Box",
+            "type": "multitext",
+            "options": {
+              "items": [
+                {
+                  "param": "lnpminlon",
+                  "value": 999,
+                  "comment": "Left Longitude Degrees; 999=No sub-area"
+                },
+                {
+                  "param": "lnpminlat",
+                  "value": "",
+                  "comment": "Bottom Latitude Degrees"
+                },
+                {
+                  "param": "lnpmaxlon",
+                  "value": "",
+                  "comment": "Right Longitude Degrees"
+                },
+                {
+                  "param": "lnpmaxlat",
+                  "value": "",
+                  "comment": "Top Latitude Degrees"
+                }
+              ]
+            }
+          }
+        ]
       }
     ]
   }

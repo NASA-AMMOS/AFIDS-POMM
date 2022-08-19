@@ -1,7 +1,9 @@
-from tkinter import Frame, Button, CENTER, BOTTOM, E
+from tkinter import Frame, Button, CENTER, BOTTOM, E, SE, SW
 from components.ComponentRenderer import ComponentRenderer
 import ttkbootstrap as ttk
-from ttkbootstrap.constants import SUCCESS, OUTLINE
+from ttkbootstrap.constants import INFO, OUTLINE
+
+from components.tophelp import TopHelp
 
 
 def co_register():
@@ -26,15 +28,36 @@ class CoRegister(Frame):
         self.page = 0
         self.setPage(self.page)
 
+        TopHelp(self, 'aboutcoregister')
+
         # Continue
-        button = ttk.Button(
+        buttonContinue = ttk.Button(
             self,
             text="Continue",
-            command=lambda: self.setPage(self.page + 1),
-            bootstyle=(SUCCESS)
+            command=lambda: self.forward(),
+            bootstyle=(INFO)
         )
+        buttonContinue.place(rely=1.0, relx=1.0, relwidth=0.8, anchor=SE)
 
-        button.pack(side=BOTTOM, padx=12, pady=42, anchor=E)
+        # Back
+        buttonBack = ttk.Button(
+            self,
+            text="Back",
+            command=lambda: self.backward()
+        )
+        buttonBack.place(rely=1.0, relx=0.0, relwidth=0.2, anchor=SW)
+
+    def forward(self):
+        if (self.page + 1 < len(self.config['pages'])):
+            self.setPage(self.page + 1)
+        else:
+            self.parent.show_frame("Run")
+
+    def backward(self):
+        if (self.page - 1 >= 0):
+            self.setPage(self.page - 1)
+        else:
+            self.parent.show_frame("Command")
 
     def setPage(self, page):
         self.page = page

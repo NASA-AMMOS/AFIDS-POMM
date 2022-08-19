@@ -1,6 +1,8 @@
 from tkinter import Frame, Label, W, E, BOTTOM, PhotoImage, Button, CENTER, StringVar
 import ttkbootstrap as ttk
-from ttkbootstrap.constants import SUCCESS, OUTLINE
+from ttkbootstrap.constants import INFO, OUTLINE
+
+from components.tophelp import TopHelp
 
 
 def command():
@@ -14,7 +16,7 @@ class Command(Frame):
 
         label = ttk.Label(self, text="Choose an Operation",
                           font=('Segoe UI', '14'))
-        label.place(y=32, relx=.5, rely=0, anchor=CENTER)
+        label.place(y=46, relx=.5, rely=0, anchor=CENTER)
 
         cardH = 128
         imageH = 96
@@ -32,7 +34,7 @@ class Command(Frame):
         self.cards = {}
 
         hlbg = "#ffffff"
-        hlbgA = "#18bc9c"
+        hlbgA = "#3498db"
         hlth = 2
         hlthA = 2
 
@@ -90,6 +92,8 @@ class Command(Frame):
             label.bind("<Button-1>", select(page))
             label2.bind("<Button-1>", select(page))
             label3.bind("<Button-1>", select(page))
+
+        TopHelp(self, "command")
 
     def setCommand(self, command):
         self.parent.state.set_state('core', 'command', command)

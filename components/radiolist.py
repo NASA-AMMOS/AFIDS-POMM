@@ -35,7 +35,7 @@ def RadioList(self, component, startY, parent, command):
             sFrame, text=name,
             variable=radioValue,
             value=value,
-            bootstyle="success",
+            bootstyle="INFO",
             command=lambda: parent.state.set_state(
                 command, component['param'], radioValue.get())
         )

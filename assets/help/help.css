@@ -1,0 +1,14 @@
+body {
+    padding: 0px 32px;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+p {
+    text-indent: 32px;
+    line-height: 20px;
+}

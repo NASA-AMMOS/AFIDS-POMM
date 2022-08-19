@@ -1,4 +1,4 @@
-from tkinter import Button, CENTER, W, NE, NW, N, StringVar, Text
+from tkinter import Button, CENTER, W, NE, NW, N, StringVar, Text, Scrollbar, RIGHT
 import ttkbootstrap as ttk
 from ttkbootstrap.scrolled import ScrolledFrame
 import re
@@ -10,13 +10,22 @@ from components.param import Param
 def MultiText(self, component, startY, parent, command):
     startY = Title(self, component, startY)
 
-    sFrameH = min(len(component['options']['items']) * 24, 250)
+    fontsize = 10
+    viewrows = 8
+    sFrameH = (fontsize + 9) * viewrows
 
     if 'param' in component:
         Param(self, component['param'], startY + (sFrameH/2))
 
-    text = Text(self, height=8, wrap="none")
+    v = Scrollbar(self, orient='vertical')
+
+    text = Text(self, height=viewrows, wrap="none",
+                font=('Segoe UI', fontsize),
+                yscrollcommand=v.set)
+
     text.place(y=startY, relx=0.2, relwidth=0.7, anchor=NW)
+    v.config(command=text.yview)
+    v.place(in_=text, relx=1.0, relheight=1.0, bordermode="outside")
 
     idx = 1
     for (index, item) in enumerate(component['options']['items']):

@@ -1,17 +1,32 @@
 from tkinter import Button, NE, messagebox
 import ttkbootstrap as ttk
 
+from components.help import Help
+
 
 def Title(self, component, startY):
     headH = 30
 
-    label = ttk.Label(self, text=component['title'], font=('Segoe UI', '12'))
-    label.place(y=startY, relx=0.2)
+    relx = 0.2
+    fontsize = '12'
+    if 'indent' in component and component['indent'] == True:
+        relx = 0.25
+        fontsize = '10'
+
+    label = ttk.Label(
+        self, text=component['title'], font=('Segoe UI', fontsize))
+    label.place(y=startY, relx=relx)
+
+    def openHelp():
+        if ('help' in component):
+            Help(component['help'])
+        else:
+            Help('none')
 
     buttonHelp = Button(
         self,
         image=self.helpIcon,
-        command=lambda: messagebox.showinfo('POMM Help', component['help']),
+        command=lambda: openHelp(),
         width=headH,
         height=headH
     )

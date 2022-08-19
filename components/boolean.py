@@ -34,12 +34,12 @@ def Boolean(self, component, startY, parent, command):
     # trigger default state
     setState(self)
 
+    t = ttk.Radiobutton(self, text=trueText,
+                        variable=boolValue, value=1, bootstyle="INFO")
+    t.place(y=startY + 8, relx=0.2, relwidth=0.2)
     f = ttk.Radiobutton(self, text=falseText,
                         variable=boolValue, value=0, bootstyle="secondary")
-    f.place(y=startY + 8, relx=0.2, relwidth=0.2)
-    t = ttk.Radiobutton(self, text=trueText,
-                        variable=boolValue, value=1, bootstyle="success")
-    t.place(y=startY + 8, relx=0.4, relwidth=0.2)
+    f.place(y=startY + 8, relx=0.4, relwidth=0.2)
 
     startY = startY + H
 

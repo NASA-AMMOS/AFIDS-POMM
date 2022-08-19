@@ -1,6 +1,7 @@
-from tkinter import Frame, Label, W, E, BOTTOM, CENTER, StringVar
+from tkinter import Frame, Label, W, E, SW, BOTTOM, CENTER, StringVar
 import ttkbootstrap as ttk
-from ttkbootstrap.constants import SUCCESS, OUTLINE, DISABLED
+from ttkbootstrap.constants import INFO, OUTLINE, DISABLED
+from components.tophelp import TopHelp
 
 
 def planet():
@@ -12,9 +13,9 @@ class Planet(Frame):
         Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
 
-        label = ttk.Label(self, text="Choose a Celestial Body",
+        label = ttk.Label(self, text="Choose a Planet/Moon",
                           font=('Segoe UI', '14'))
-        label.place(y=32, relx=.5, rely=0, anchor=CENTER)
+        label.place(y=46, relx=.5, rely=0, anchor=CENTER)
 
         self.continueButton = ttk.Button(
             self,
@@ -23,9 +24,7 @@ class Planet(Frame):
             bootstyle=(OUTLINE, DISABLED),
             state="disabled"
         )
-
-        self.continueButton.pack(side=BOTTOM, padx=12,
-                                 pady=42, ipadx=42, anchor=E)
+        self.continueButton.place(relx=0.0, rely=1.0, relwidth=1.0, anchor=SW)
 
         self.celestialBody = StringVar()
         self.celestialBody.trace('w', self.validate)
@@ -37,12 +36,15 @@ class Planet(Frame):
             name = planet['name']
             value = planet['value']
             rb = ttk.Radiobutton(
-                self, text=name, variable=self.celestialBody, value=value, bootstyle="success")
-            rb.place(y=(90 + index * 30), relx=.25, rely=0, anchor=W)
+                self, text=name, variable=self.celestialBody, value=value, bootstyle=("outline-toolbutton", INFO))
+            rb.configure()
+            rb.place(y=(90 + index * 34), relx=0.5, rely=0, anchor=CENTER)
+
+        TopHelp(self, "planet")
 
     def validate(self, a, b, c):
         if (self.celestialBody.get()):
-            self.continueButton.configure(bootstyle=(SUCCESS), state="enabled")
+            self.continueButton.configure(bootstyle=(INFO), state="enabled")
             return True
         return False
 

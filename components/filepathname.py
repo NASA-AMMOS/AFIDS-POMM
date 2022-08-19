@@ -21,8 +21,14 @@ def FilePathName(self, component, startY, parent, command):
         parent.state.set_state(command, component['param'], nameValue.get())
     nameValue.trace('w', setState)
 
+    relx = 0.2
+    relwidth = 0.6
+    if 'indent' in component and component['indent'] == True:
+        relx = 0.25
+        relwidth = 0.55
+
     entry = ttk.Entry(self, bootstyle="secondary", textvariable=nameValue)
-    entry.place(y=startY, relx=0.2, relwidth=0.6)
+    entry.place(y=startY, relx=relx, relwidth=relwidth)
 
     def browseFile():
         filetypes = ()
