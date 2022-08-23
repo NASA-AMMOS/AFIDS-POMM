@@ -1,6 +1,7 @@
 class State():
     def __init__(self):
         self.state = {
+            'version': '1.0.0',
             'core': {
                 'planet': None,
                 'command': None,

@@ -2,6 +2,8 @@ from tkinter import Frame, Scrollbar, Text, CENTER, SW, NW, SE, DISABLED
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import INFO, OUTLINE
 
+import subprocess
+
 from components.tophelp import TopHelp
 
 
@@ -30,11 +32,36 @@ class Run(Frame):
         self.runButton = ttk.Button(
             self,
             text="RUN",
-            bootstyle=(INFO)
+            bootstyle=(INFO),
+            command=lambda: self.run()
         )
         self.runButton.place(rely=1.0, relx=0.2, relwidth=0.8, anchor=SW)
 
         TopHelp(self, "run")
+
+    def run(self):
+        state = self.parent.state.get_state()
+        planet = state['core']['planet']
+        command = state['core']['command']
+        params = state[command]
+        upf = [
+            '# POMM UPF',
+            '# AFIDS Planetary Orbital Mapping and Mosaicking User Parameter File',
+            '# Generated with POMM UI v' + state['version'],
+            '# For command: ' + command.lower(),
+            '',
+            'planet=' + planet,
+            ''
+        ]
+        for key, value in params.items():
+            upf.append(str(key) + '=' + str(value))
+        upf = "\n".join(str(x) for x in upf)
+
+        f = open("pomm-" + command.lower() + ".upf", "w")
+        f.write(upf)
+        f.close()
+
+        subprocess.Popen("command")
 
     def backward(self):
         state = self.parent.state.get_state()
