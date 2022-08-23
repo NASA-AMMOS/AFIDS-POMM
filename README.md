@@ -6,5 +6,5 @@ POMM - Planetary Orbital Mosaicking and Mapping
 
 #### Windows
 
-1. `pyinstaller --onefile --windowed pomm.py`
+1. `pyinstaller --onefile --windowed --collect-all tkinterweb pomm.py`
 1. Copy `/assets` into `/dist`

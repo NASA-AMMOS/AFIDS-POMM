@@ -57,7 +57,7 @@ class Run(Frame):
             upf.append(str(key) + '=' + str(value))
         upf = "\n".join(str(x) for x in upf)
 
-        f = open("pomm-" + command.lower() + ".upf", "w")
+        f = open("pomm-" + command.lower() + "-params.upf", "w")
         f.write(upf)
         f.close()
 
