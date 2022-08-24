@@ -8,7 +8,7 @@ def Help(name):
         html_string = f.read()
 
         top = Toplevel()
-        top.geometry("1000x700")
+        top.geometry("700x500")
         # create the HTML browser
         frame = HtmlFrame(top, messages_enabled=False)
         frame.load_html(html_string)

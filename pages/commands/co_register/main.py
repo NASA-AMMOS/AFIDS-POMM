@@ -28,7 +28,7 @@ class CoRegister(Frame):
         self.page = 0
         self.setPage(self.page)
 
-        TopHelp(self, 'aboutcoregister')
+        TopHelp(self, 'coregister-about')
 
         # Continue
         buttonContinue = ttk.Button(

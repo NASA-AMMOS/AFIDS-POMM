@@ -5,7 +5,7 @@ from components.title import Title
 from components.param import Param
 
 
-def Number(self, component, startY, parent, command):
+def Number(self, component, startY, parent, command, curVal):
     startY = Title(self, component, startY)
 
     H = 28
@@ -13,8 +13,12 @@ def Number(self, component, startY, parent, command):
     if 'param' in component:
         Param(self, component['param'], startY + (H/2))
 
+    defVal = ''
+    if (curVal):
+        defVal = str(curVal)
+
     numberValue = StringVar()
-    numberValue.set('')
+    numberValue.set(defVal)
 
     def setState(self, *args):
         parent.state.set_state(

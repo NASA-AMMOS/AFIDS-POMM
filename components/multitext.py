@@ -7,7 +7,7 @@ from components.title import Title
 from components.param import Param
 
 
-def MultiText(self, component, startY, parent, command):
+def MultiText(self, component, startY, parent, command, curParams):
     startY = Title(self, component, startY)
 
     fontsize = 10
@@ -31,6 +31,8 @@ def MultiText(self, component, startY, parent, command):
     for (index, item) in enumerate(component['options']['items']):
         param = item['param']
         value = item['value']
+        if (curParams and param in curParams):
+            value = str(curParams[param])
         if ('comment' in item):
             text.insert('end', '# ' + item['comment'] + ':\n')
             text.tag_add("comment", str(idx) + ".0", str(idx) + ".end")

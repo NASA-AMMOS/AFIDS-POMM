@@ -5,7 +5,7 @@ from components.title import Title
 from components.param import Param
 
 
-def RadioList(self, component, startY, parent, command):
+def RadioList(self, component, startY, parent, command, curVal):
     startY = Title(self, component, startY)
 
     sFrameH = min(len(component['options']['items']) * 24, 150)
@@ -25,8 +25,12 @@ def RadioList(self, component, startY, parent, command):
     sSep = ttk.Separator(self)
     sSep.place(y=startY + sFrameH + 1, relx=0.2, relwidth=0.7, anchor=NW)
 
+    defVal = ''
+    if (curVal):
+        defVal = str(curVal)
+
     radioValue = StringVar()
-    radioValue.set('')
+    radioValue.set(defVal)
 
     for (index, item) in enumerate(component['options']['items']):
         name = item['name']

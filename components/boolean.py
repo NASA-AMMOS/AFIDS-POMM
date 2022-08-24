@@ -5,7 +5,7 @@ from components.title import Title
 from components.param import Param
 
 
-def Boolean(self, component, startY, parent, command):
+def Boolean(self, component, startY, parent, command, curVal):
     startY = Title(self, component, startY)
 
     H = 28
@@ -14,6 +14,8 @@ def Boolean(self, component, startY, parent, command):
         Param(self, component['param'], startY + (H/2))
 
     default = 0
+    trueValue = 1
+    falseValue = 0
     trueText = 'Yes (1)'
     falseText = 'No (0)'
     if ('options' in component):
@@ -23,6 +25,13 @@ def Boolean(self, component, startY, parent, command):
             trueText = component['options']['trueText']
         if ('falseText' in component['options']):
             falseText = component['options']['falseText']
+        if ('trueValue' in component['options']):
+            trueValue = component['options']['trueValue']
+        if ('falseValue' in component['options']):
+            falseValue = component['options']['falseValue']
+
+    if (curVal is not None):
+        default = int(curVal)
 
     boolValue = IntVar()
     boolValue.set(default)
@@ -35,10 +44,10 @@ def Boolean(self, component, startY, parent, command):
     setState(self)
 
     t = ttk.Radiobutton(self, text=trueText,
-                        variable=boolValue, value=1, bootstyle="INFO")
+                        variable=boolValue, value=trueValue, bootstyle="INFO")
     t.place(y=startY + 8, relx=0.2, relwidth=0.2)
     f = ttk.Radiobutton(self, text=falseText,
-                        variable=boolValue, value=0, bootstyle="secondary")
+                        variable=boolValue, value=falseValue, bootstyle="secondary")
     f.place(y=startY + 8, relx=0.4, relwidth=0.2)
 
     startY = startY + H

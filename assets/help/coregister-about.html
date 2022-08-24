@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="assets/help/help.css">
+</head>
+<body>
+    <h1>About Co-Registration</h1>
+    <p>Use this tool to co-register and stack time series satellite images that may have large offsets (100+ meters) relative to each other. The inputs can be from different satellite sensors and resolutions (e.g., CTX and HRSC) as long as they are map-projected (from the same planet) and have a large overlap. The software co-registers the "Second" map image to the "Reference/Master" map image. The Reference image should be similar or lower resolution than the Second image. With the default option (1), the two registered images are output to the dimensions and projection of the Reference image. With option 2, both (master and secondary images) are trimmed to the size of the secondary image (with added padding). A gridded tiepoint file is output, but is relative to the master image and an "intermediate" projected version of the second image (also output). The tiepoint file (csv/text format) contains six columns: Latitude, Longitude, Reference Image Line, Reference Image Sample, Second Image Line, and Second Image Sample. Note that the quality of the co-registration will be limited by the quality of the original map projections (and their elevation models in high terrain areas). The two input images (or links) must be in one local directory. Accepted georeferenced input file formats include: .tif (geotiff); .jp2 (jpeg2000); .img (PDS); and .vic (vicarGT).</p>
+    <ul>
+        Co-registration outputs include:
+        <li>
+            <i>prefix</i>_ref_reg.tif — Co-registered Referenced/Master image.
+        </li>
+        <li>
+            <i>prefix</i>_sec_reg.tif — Co-registered Secondary image.
+        </li>
+        <li>
+            <i>prefix</i>_sec_intermediate.tif — Intermediate scaled Secondary image (unregistered).
+        </li>
+        <li>
+            <i>prefix</i>_tiepoints_6col.csv — Gridded tiepoint file between the Master and Intermediate.
+        </li>
+        <li>
+            <i>prefix</i>_log.csv — POMM/VICAR/AFIDS processing log (text).
+        </li>
+        <li>
+            <i>prefix</i>_receipt.csv — POMM receipt (summary) text file.
+        </li>
+    </ul>
+</body>
+</html>

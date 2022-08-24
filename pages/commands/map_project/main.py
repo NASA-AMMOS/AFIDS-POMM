@@ -27,7 +27,7 @@ class MapProject(Frame):
         self.page = 0
         self.setPage(self.page)
 
-        TopHelp(self, "aboutmapproject")
+        TopHelp(self, "mapproject-about")
 
         # Continue
         buttonContinue = ttk.Button(

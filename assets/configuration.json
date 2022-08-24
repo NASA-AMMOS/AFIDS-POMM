@@ -13,50 +13,61 @@
           {
             "param": "sensor",
             "title": "Orbital Spacecraft Sensor",
-            "help": "mapproject",
+            "help": "mapproject-sensor",
             "type": "radiolist",
             "options": {
               "items": [
-                { "name": "Mars MRO CTX", "value": "ctx", "planet": "Mars" },
-                { "name": "Mars MRO CTX1", "value": "ctx1", "planet": "Mars" },
-                { "name": "Mars MRO CTX2", "value": "ctx2", "planet": "Mars" },
-                { "name": "Mars MRO CTX3", "value": "ctx3", "planet": "Mars" },
-                { "name": "Mars MRO CTX4", "value": "ctx4", "planet": "Mars" },
-                { "name": "Mars MRO CTX5", "value": "ctx5", "planet": "Mars" },
-                { "name": "Mars MRO CTX6", "value": "ctx6", "planet": "Mars" },
+                { "name": "Mars MRO CTX", "value": "ctx", "planet": "mars" },
                 {
                   "name": "Mars MRO HiRISE",
                   "value": "hirise",
-                  "planet": "Mars"
-                }
+                  "planet": "mars"
+                },
+                { "name": "Mars MEX HRSC", "value": "hrsc", "planet": "mars" },
+                { "name": "Luna LRO NAC", "value": "nac", "planet": "moon" },
+                { "name": "Luna LRO WAC", "value": "wac", "planet": "moon" }
               ]
             }
           },
           {
             "title": "Need Help Finding PDS Images for Projection?",
+            "help": "mapproject-finding",
             "type": "title"
           },
           {
             "param": "rawimg",
-            "title": "FULL Local Directory Path to Input PDS Images",
-            "type": "filepath"
+            "title": "FULL Local Directory Path to Input PDS Images (except HiRISE)",
+            "help": "mapproject-rawimg",
+            "type": "filepathname",
+            "options": {
+              "extensions": [
+                { "name": "PDS Images", "value": "*.IMG" },
+                { "name": "PDS Images", "value": "*.img" }
+              ]
+            }
           },
           {
             "param": "pathraw",
-            "title": "PDS Input Image Filename",
-            "type": "filename",
-            "options": {
-              "extensions": [{ "name": "PDS Images", "value": "*.IMG" }]
-            }
+            "title": "HiRISE FULL Directory Path to PDS Input Focal Plane Images (HiRISE only)",
+            "help": "mapproject-pathraw",
+            "type": "filepath"
+          },
+          {
+            "param": "hiroot",
+            "title": "HiRISE PDS Root Filename (HiRISE only)",
+            "help": "mapproject-hiroot",
+            "type": "string"
           },
           {
             "param": "outpre",
             "title": "PREFIX Filename for Output Products",
+            "help": "mapproject-outpre",
             "type": "string"
           },
           {
             "param": "mpix",
-            "title": "OUTPUT PIXEL SIZE (meters/pixel)",
+            "title": "Output Pixel Size (meters/pixel)",
+            "help": "mapproject-mpix",
             "type": "number"
           }
         ]
@@ -66,11 +77,13 @@
           {
             "param": "demimg",
             "title": "FULL Directory Path/Filename to Encompassing DEM",
+            "help": "mapproject-demimg",
             "type": "filepathname"
           },
           {
             "param": "mapref",
-            "title": "Output Map Projections",
+            "title": "Output Map Projection",
+            "help": "mapproject-mapref",
             "type": "radiolist",
             "options": {
               "items": [
@@ -80,15 +93,16 @@
                   "value": "equidistant"
                 },
                 {
-                  "name": "North Pole Stereographic",
-                  "value": "north_polar_stereographic"
+                  "name": "Sinusoidal",
+                  "value": "sinusoidal"
                 }
               ]
             }
           },
           {
             "param": "debug",
-            "title": "Keep Temporary Files",
+            "title": "Keep Temporary/Intermediate Files",
+            "help": "mapproject-debug",
             "type": "boolean",
             "options": {
               "trueText": "Yes (1)",
@@ -99,6 +113,7 @@
           {
             "title": "Other Default Parameters",
             "type": "multitext",
+            "help": "mapproject-other",
             "options": {
               "items": [
                 { "param": "hiband", "value": "1" },
@@ -130,17 +145,20 @@
         "components": [
           {
             "param": "refimg",
-            "title": "MASTER Image Full Path/Filename",
+            "title": "MASTER Image Full Path/Filename (Input Reference Map Image)",
+            "help": "coregister-refimg",
             "type": "filepathname"
           },
           {
             "param": "secimg",
             "title": "SECONDARY Full Path/Filename (Image to be Stacked)",
+            "help": "coregister-secimg",
             "type": "filepathname"
           },
           {
             "param": "outpre",
             "title": "PREFIX Filename for Output Products",
+            "help": "coregister-outpre",
             "type": "string",
             "options": {
               "forbid": [" "],
@@ -148,8 +166,22 @@
             }
           },
           {
+            "param": "match",
+            "title": "TRIM Output to Master or Secondary Image Size",
+            "help": "coregister-match",
+            "type": "boolean",
+            "options": {
+              "trueText": "Master (1)",
+              "trueValue": 1,
+              "falseText": "Secondary (2)",
+              "falseValue": 2,
+              "default": true
+            }
+          },
+          {
             "param": "debug",
-            "title": "Keep Temporary Files",
+            "title": "Keep Temporary/Intermediate Files",
+            "help": "coregister-debug",
             "type": "boolean",
             "options": {
               "trueText": "Yes (1)",
@@ -159,6 +191,7 @@
           },
           {
             "title": "Other Default Parameters",
+            "help": "coregister-other",
             "type": "multitext",
             "options": {
               "items": [
@@ -216,6 +249,7 @@
           {
             "param": "matchbase",
             "title": "MATCH Mosaic to an existing orthobase?",
+            "help": "mosaic-matchbase",
             "type": "boolean",
             "options": {
               "trueText": "Yes (1)",
@@ -226,12 +260,14 @@
           {
             "param": "lsat",
             "title": "IF Yes, Specifiy Complete path/directory/filename",
+            "help": "mosaic-lsat",
             "type": "filepathname",
             "indent": true
           },
           {
             "param": "coverref",
             "title": "Output Projection Reference (Use this Image's Projection)",
+            "help": "mosaic-coverref",
             "type": "boolean",
             "options": {
               "trueText": "Yes (1)",
@@ -242,6 +278,7 @@
           {
             "param": "refmap",
             "title": "IF Yes, Specifiy Complete path/directory/filename",
+            "help": "mosaic-refmap",
             "type": "filepathname",
             "indent": true
           }
@@ -253,6 +290,7 @@
           {
             "param": "imgchk",
             "title": "OVERRIDE Image Verification Warning?",
+            "help": "mosaic-imgchk",
             "type": "boolean",
             "options": {
               "trueText": "Yes (1)",
@@ -262,7 +300,8 @@
           },
           {
             "param": "debug",
-            "title": "Keep Temporary/Intermediate Files?",
+            "title": "Keep Temporary/Intermediate/Intermediate Files?",
+            "help": "mosaic-debug",
             "type": "boolean",
             "options": {
               "trueText": "Yes (1)",
@@ -272,6 +311,7 @@
           },
           {
             "title": "Other Default Parameters",
+            "help": "mosaic-other",
             "type": "multitext",
             "options": {
               "items": [
@@ -318,6 +358,7 @@
           },
           {
             "title": "LAT/LON Output Sub-Area Box",
+            "help": "mosaic-latlonbox",
             "type": "multitext",
             "options": {
               "items": [

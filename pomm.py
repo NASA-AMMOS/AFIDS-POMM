@@ -51,9 +51,9 @@ class App(Tk):
 
         # Setting up Initial Things
         self.title("POMM")
-        self.geometry(f'{scaled(700)}x{scaled(700)}')
+        self.geometry(f'{scaled(800)}x{scaled(700)}')
         self.resizable(False, True)
-        self.iconphoto(False, PhotoImage(file="assets/pomm_logo.png"))
+        self.iconphoto(False, PhotoImage(file="assets/main-logo.png"))
 
         # Load config
         with open('assets/configuration.json', 'r') as config:

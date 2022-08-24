@@ -3,6 +3,7 @@ import ttkbootstrap as ttk
 from ttkbootstrap.constants import INFO, OUTLINE
 
 from components.tophelp import TopHelp
+from components.help import Help
 
 
 def command():
@@ -23,14 +24,16 @@ class Command(Frame):
         cardS = 16
 
         COMMANDS = [
-            ('Map Project', 'project', 'MapProject', 'Transform a PDS image to a GIS/Map Format',
+            ('Map Project', 'mapproject', 'MapProject', 'Transform a PDS image to a GIS/Map Format',
              'Copy a raw PDS image into your local directory.'),
-            ('Co-Registration', 'coreg', 'CoRegister', 'Stack Two Map Orbital Images',
+            ('Co-Registration', 'coregister', 'CoRegister', 'Stack Two Map Orbital Images',
              'Put your two input Map-Projected images in one local directory.'),
             ('Mosaic', 'mosaic', 'Mosaic', 'Combines Several Map-Projected Orbital Images',
              'Put all your input Map-Projected images in one local directory.')
         ]
 
+        self.helpIcons = {}
+        self.buttonHelps = {}
         self.cards = {}
 
         hlbg = "#ffffff"
@@ -53,6 +56,9 @@ class Command(Frame):
 
             def select(page):
                 return lambda e: self.setCommand(page)
+
+            def openHelp(index):
+                return lambda: Help(COMMANDS[index][1])
 
             img = PhotoImage(file="assets/" + val + ".png")
             button = Button(
@@ -92,6 +98,22 @@ class Command(Frame):
             label.bind("<Button-1>", select(page))
             label2.bind("<Button-1>", select(page))
             label3.bind("<Button-1>", select(page))
+
+            # Help
+            headH = 30
+
+            self.helpIcons[index] = PhotoImage(file="assets/help.png")
+            self.buttonHelps[index] = Button(
+                card,
+                image=self.helpIcons[index],
+                command=openHelp(index),
+                width=headH,
+                height=headH
+            )
+            self.buttonHelps[index].configure(background='#FFFFFF',
+                                              activebackground='#FFFFFF')
+            self.buttonHelps[index].place(width=headH, height=headH,
+                                          relx=0.9, rely=0.5, anchor=CENTER)
 
         TopHelp(self, "command")
 

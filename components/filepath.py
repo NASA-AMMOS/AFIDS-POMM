@@ -6,7 +6,7 @@ from components.title import Title
 from components.param import Param
 
 
-def FilePath(self, component, startY, parent, command):
+def FilePath(self, component, startY, parent, command, curVal):
     startY = Title(self, component, startY)
 
     H = 28
@@ -14,8 +14,12 @@ def FilePath(self, component, startY, parent, command):
     if 'param' in component:
         Param(self, component['param'], startY + (H/2))
 
+    defVal = ''
+    if (curVal):
+        defVal = str(curVal)
+
     pathValue = StringVar()
-    pathValue.set('')
+    pathValue.set(defVal)
 
     def setState(self, *args):
         parent.state.set_state(command, component['param'], pathValue.get())
