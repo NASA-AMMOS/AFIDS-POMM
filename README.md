@@ -1,5 +1,12 @@
 POMM - Planetary Orbital Mosaicking and Mapping
 
+### Dev Install:
+
+`git clone https://github.jpl.nasa.gov/tsoliman/POMM`
+`python3 -m pip install -r requirements.txt`
+
+### Dev Run:
+
 `python3 pomm.py`
 
 ### Bundling:
