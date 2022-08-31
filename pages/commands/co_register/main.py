@@ -16,7 +16,7 @@ class CoRegister(Frame):
         self.parent = parent
 
         label = ttk.Label(self, text="Co-Registration",
-                          font=('Segoe UI', '16'))
+                          font=('Segoe UI', '16', 'bold'))
         label.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
         self.config = self.parent.config['CoRegister']

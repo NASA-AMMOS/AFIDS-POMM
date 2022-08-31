@@ -17,8 +17,8 @@ class Run(Frame):
         self.parent = parent
 
         label = ttk.Label(self, text="RUN", font=(
-            'Segoe UI', '18'), bootstyle=INFO)
-        label.place(y=46, relx=.5, rely=0, anchor=CENTER)
+            'Segoe UI', '18', 'bold'), bootstyle=INFO)
+        label.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
         # Back
         buttonBack = ttk.Button(

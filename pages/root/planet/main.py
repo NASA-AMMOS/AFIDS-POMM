@@ -14,8 +14,8 @@ class Planet(Frame):
         self.parent = parent
 
         label = ttk.Label(self, text="Choose a Planet/Moon",
-                          font=('Segoe UI', '14'))
-        label.place(y=46, relx=.5, rely=0, anchor=CENTER)
+                          font=('Segoe UI', '16', 'bold'))
+        label.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
         self.continueButton = ttk.Button(
             self,
@@ -37,8 +37,7 @@ class Planet(Frame):
             value = planet['value']
             rb = ttk.Radiobutton(
                 self, text=name, variable=self.celestialBody, value=value, bootstyle=("outline-toolbutton", INFO))
-            rb.configure()
-            rb.place(y=(90 + index * 34), relx=0.5, rely=0, anchor=CENTER)
+            rb.place(y=(86 + index * 44), relx=0.5, rely=0, anchor=CENTER)
 
         TopHelp(self, "planet")
 

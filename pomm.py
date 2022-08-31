@@ -47,7 +47,10 @@ class App(Tk):
 
         self.state = State()
 
-        ttk.Style("flatly")
+        self.style = ttk.Style("flatly")
+        self.style.configure('TButton', font=('Segoe UI', '11'))
+        self.style.configure('Toolbutton', font=('Segoe UI', '11'))
+        self.style.configure('primary.TButton', font=('Segoe UI', '9'))
 
         # Setting up Initial Things
         self.title("POMM")

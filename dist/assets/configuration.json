@@ -1,0 +1,111 @@
+{
+  "planets": [
+    { "name": "Mars", "value": "mars" },
+    { "name": "Earth", "value": "earth" },
+    { "name": "The Moon", "value": "moon" }
+  ],
+  "MapProject": {
+    "description": "",
+    "help": "",
+    "pages": [
+      {
+        "components": [
+          {
+            "title": "Orbital Spacecraft Sensor",
+            "help": "No help",
+            "type": "radiolist",
+            "options": {
+              "items": [
+                { "name": "Mars MRO CTX", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX1", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX2", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX3", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX4", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX5", "value": "ctx", "planet": "Mars" },
+                { "name": "Mars MRO CTX6", "value": "ctx", "planet": "Mars" },
+                {
+                  "name": "Mars MRO HiRISE",
+                  "value": "hirise",
+                  "planet": "Mars"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Need Help Finding PDS Images for Projection?",
+            "help": "No help",
+            "type": "title"
+          },
+          {
+            "title": "FULL Local Directory Path to Input PDS Images",
+            "help": "No help",
+            "type": "filepath"
+          },
+          {
+            "title": "PDS Input Image Filename",
+            "help": "No help",
+            "type": "filename",
+            "options": {
+              "extensions": [{ "name": "PDS Images", "value": "*.IMG" }]
+            }
+          },
+          {
+            "title": "PREFIX Filename for Output Products",
+            "help": "No help",
+            "type": "string"
+          },
+          {
+            "title": "OUTPUT PIXEL SIZE (meters/pixel)",
+            "help": "No help",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "components": [
+          {
+            "title": "FULL Directory Path/Filename to Encompassing DEM",
+            "help": "No help",
+            "type": "filepathname"
+          },
+          {
+            "title": "Output Map Projections",
+            "help": "No help",
+            "type": "radiolist",
+            "options": {
+              "items": [
+                { "name": "Latitude-Longitude", "value": "latitude-longitude" },
+                {
+                  "name": "Equidistant",
+                  "value": "equidistant"
+                },
+                {
+                  "name": "North Pole Stereographic",
+                  "value": "north_polar_stereographic"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Keep Temporary Files",
+            "help": "No help",
+            "type": "boolean"
+          },
+          {
+            "title": "Other Default Parameters",
+            "help": "No help",
+            "type": "text",
+            "options": {
+              "items": [
+                { "name": "hiband", "value": "1" },
+                { "name": "pathout", "value": "finalmos" }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "CoRegister": {},
+  "Mosaic": {}
+}

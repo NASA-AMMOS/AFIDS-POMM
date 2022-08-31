@@ -14,21 +14,19 @@ class Splash(Frame):
         Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
 
-        self.bottomLeftImg = PhotoImage(file="assets/bottom-left-logo.png")
-        bottomLeftLogo = Label(self, image=self.bottomLeftImg)
-        bottomLeftLogo.place(relx=0.02, rely=0.98,
-                             width=100, height=40, anchor=SW)
 
-        self.bottomRightImg = PhotoImage(file="assets/bottom-right-logo.png")
-        bottomRightLogo = Label(self, image=self.bottomRightImg)
-        bottomRightLogo.place(relx=.98, rely=0.98, width=100,
-                              height=40, anchor=SE)
+        self.groupImg = PhotoImage(file="assets/group-logo.png")
+        groupLogo = Label(self, image=self.groupImg)
+        groupLogo.place(relx=0.02, rely=0.98, width=100,
+                              height=40, anchor=SW)
 
-        label = ttk.Label(self, text="POMM", font=('Berlin Sans FB', '32'))
-        label.place(height=42, relx=.5, rely=.30, anchor=CENTER)
+
+        label = ttk.Label(self, text="POMM", font=('Berlin Sans FB', '36'))
+        label.place(height=50, relx=.5, rely=.25, anchor=CENTER)
         label = ttk.Label(
-            self, text="Planetary Orbital Mosaicking and Mapping", font=('Segoe UI', '14'))
-        label.place(y=50, relx=.5, rely=.30, anchor=CENTER)
+            self, text="Planetary Orbital Mosaicking and Mapping", font=('Segoe UI', '16'))
+        label.place(y=56, relx=.5, rely=.25, anchor=CENTER)
+
 
         button = ttk.Button(
             self,
@@ -36,6 +34,6 @@ class Splash(Frame):
             command=lambda: parent.show_frame('Planet'),
             bootstyle=(INFO, OUTLINE)
         )
-        button.place(y=120, relx=.5, rely=.30, anchor=CENTER)
+        button.place(y=118, relx=.5, rely=.25, width=100, height=40, anchor=CENTER)
 
         TopHelp(self, 'pomm')

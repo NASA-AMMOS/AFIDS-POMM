@@ -16,20 +16,20 @@ class Command(Frame):
         self.parent = parent
 
         label = ttk.Label(self, text="Choose an Operation",
-                          font=('Segoe UI', '14'))
-        label.place(y=46, relx=.5, rely=0, anchor=CENTER)
+                          font=('Segoe UI', '16', 'bold'))
+        label.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
         cardH = 128
         imageH = 96
         cardS = 16
 
         COMMANDS = [
-            ('Map Project', 'mapproject', 'MapProject', 'Transform a PDS image to a GIS/Map Format',
-             'Copy a raw PDS image into your local directory.'),
-            ('Co-Registration', 'coregister', 'CoRegister', 'Stack Two Map Orbital Images',
-             'Put your two input Map-Projected images in one local directory.'),
             ('Mosaic', 'mosaic', 'Mosaic', 'Combines Several Map-Projected Orbital Images',
-             'Put all your input Map-Projected images in one local directory.')
+             'Put all your input Map-Projected images in one local directory.'),
+            ('Co-Registration', 'coregister', 'CoRegister', 'Stack Two Map Orbital Images',
+             ''),
+            ('Map Project', 'mapproject', 'MapProject', 'Transform a raw PDS image to GIS/Map Format',
+             'Copy a raw PDS image into your local directory.')
         ]
 
         self.helpIcons = {}
