@@ -14,7 +14,7 @@ def Title(self, component, startY):
         fontsize = '10'
 
     label = ttk.Label(
-        self, text=component['title'], font=('Segoe UI', fontsize))
+        self, text=component['title'], font=('helvetica', fontsize))
     label.place(y=startY, relx=relx)
 
     def openHelp():

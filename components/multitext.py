@@ -20,7 +20,7 @@ def MultiText(self, component, startY, parent, command, curParams):
     v = Scrollbar(self, orient='vertical')
 
     text = Text(self, height=viewrows, wrap="none",
-                font=('Segoe UI', fontsize),
+                font=('helvetica', fontsize),
                 yscrollcommand=v.set)
 
     text.place(y=startY, relx=0.2, relwidth=0.7, anchor=NW)

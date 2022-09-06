@@ -16,7 +16,7 @@ class Command(Frame):
         self.parent = parent
 
         label = ttk.Label(self, text="Choose an Operation",
-                          font=('Segoe UI', '16', 'bold'))
+                          font=('helvetica', '16', 'bold'))
         label.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
         cardH = 128
@@ -73,19 +73,19 @@ class Command(Frame):
             label = ttk.Label(
                 card,
                 text=text,
-                font=('Segoe UI', '16')
+                font=('helvetica', '16')
             )
             label.place(y=20, x=128)
             label2 = ttk.Label(
                 card,
                 text=desc,
-                font=('Segoe UI', '12')
+                font=('helvetica', '12')
             )
             label2.place(y=50, x=128)
             label3 = ttk.Label(
                 card,
                 text=req,
-                font=('Segoe UI', '10')
+                font=('helvetica', '10')
             )
             label3.place(y=74, x=128)
 

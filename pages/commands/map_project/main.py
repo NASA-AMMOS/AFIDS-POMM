@@ -15,7 +15,8 @@ class MapProject(Frame):
         Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
 
-        label = ttk.Label(self, text="Map Projection", font=('Segoe UI', '16', 'bold'))
+        label = ttk.Label(self, text="Map Projection",
+                          font=('helvetica', '16', 'bold'))
         label.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
         self.config = self.parent.config['MapProject']

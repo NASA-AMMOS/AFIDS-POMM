@@ -15,7 +15,8 @@ class Mosaic(Frame):
         Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
 
-        label = ttk.Label(self, text="Mosaic", font=('Segoe UI', '16', 'bold'))
+        label = ttk.Label(self, text="Mosaic",
+                          font=('helvetica', '16', 'bold'))
         label.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
         self.config = self.parent.config['Mosaic']

@@ -14,7 +14,7 @@ class Planet(Frame):
         self.parent = parent
 
         label = ttk.Label(self, text="Choose a Planet/Moon",
-                          font=('Segoe UI', '16', 'bold'))
+                          font=('helvetica', '16', 'bold'))
         label.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
         self.continueButton = ttk.Button(

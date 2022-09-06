@@ -17,7 +17,7 @@ class Run(Frame):
         self.parent = parent
 
         label = ttk.Label(self, text="RUN", font=(
-            'Segoe UI', '18', 'bold'), bootstyle=INFO)
+            'helvetica', '18', 'bold'), bootstyle=INFO)
         label.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
         # Back
@@ -84,21 +84,21 @@ class Run(Frame):
             pass
 
         self.plabel = ttk.Label(self, text="Planet: " + planet.capitalize(),
-                                font=('Segoe UI', '14'))
+                                font=('helvetica', '14'))
         self.plabel.place(y=64, relx=0.1, rely=0)
 
         self.clabel = ttk.Label(self, text="Operation: " +
-                                command.capitalize(), font=('Segoe UI', '14'))
+                                command.capitalize(), font=('helvetica', '14'))
         self.clabel.place(y=96, relx=0.1, rely=0)
 
         self.prmlabel = ttk.Label(
-            self, text="Parameters:", font=('Segoe UI', '12'))
+            self, text="Parameters:", font=('helvetica', '12'))
         self.prmlabel.place(y=128, relx=0.1, rely=0)
 
         self.v = Scrollbar(self, orient='vertical')
 
         self.text = Text(self, height=22, wrap="none",
-                         font=('Segoe UI', '11'),
+                         font=('helvetica', '11'),
                          yscrollcommand=self.v.set
                          )
 
