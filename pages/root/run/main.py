@@ -81,11 +81,11 @@ class Run(Frame):
             text="STOP", bootstyle=(DANGER))
         self.buttonBack.configure(state="disabled")
 
-        process = 'vicarb "' + self.finalCommand + \
-            ' ' + self.upfPrefix + '" > & xxlog.log &'
+        process = ['vicarb', '"' + self.finalCommand + ' ' +
+                   self.upfPrefix + '"', '>&', 'xxlog.log', '&']
         subprocess.Popen(process, universal_newlines=True,
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        watchProcess = 'tail -f xxlog.log'
+        watchProcess = ['tail', '-f', 'xxlog.log']
         wp = subprocess.Popen(watchProcess, universal_newlines=True,
                               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
