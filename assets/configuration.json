@@ -5,6 +5,7 @@
     { "name": "The Moon", "value": "moon" }
   ],
   "MapProject": {
+    "command": "runtop_map",
     "description": "",
     "help": "",
     "pages": [
@@ -138,6 +139,7 @@
     ]
   },
   "CoRegister": {
+    "command": "runtop_nest",
     "description": "",
     "help": "",
     "pages": [
@@ -214,6 +216,7 @@
     ]
   },
   "Mosaic": {
+    "command": "runtop_pom",
     "description": "",
     "help": "",
     "pages": [
