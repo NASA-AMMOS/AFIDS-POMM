@@ -18,10 +18,6 @@ class Run(Frame):
         self.parent = parent
         self.isRunning = False
 
-        label = ttk.Label(self, text="RUN", font=(
-            'helvetica', '18', 'bold'), bootstyle=INFO)
-        label.place(y=32, relx=.5, rely=0, anchor=CENTER)
-
         # Back
         self.buttonBack = ttk.Button(
             self,
@@ -91,7 +87,12 @@ class Run(Frame):
 
         self.destroyComponents()
 
-        self.cmdlabel = ttk.Label(self, text=" ".join(process), font=('helvetica', '12', 'bold'))
+        self.tlabel = ttk.Label(self, text="RUNNING", font=(
+            'helvetica', '18', 'bold'), bootstyle=INFO)
+        self.tlabel.place(y=32, relx=.5, rely=0, anchor=CENTER)
+
+        self.cmdlabel = ttk.Label(self, text=" ".join(
+            process), font=('helvetica', '12', 'bold'))
         self.cmdlabel.place(y=67, relx=0.5, rely=0, anchor=CENTER)
 
         self.text = Text(self, height=28, wrap="none",
@@ -111,7 +112,7 @@ class Run(Frame):
                 print(line)
                 display.append(line)
                 if len(display) > maxLines:
-                    del(display[0])
+                    del (display[0])
                 self.text.delete('1.0', END)
                 for d in display:
                     self.text.insert(INSERT, d)
@@ -123,6 +124,7 @@ class Run(Frame):
 
     def destroyComponents(self):
         try:
+            self.tlabel.destroy()
             self.plabel.destroy()
             self.clabel.destroy()
             self.prmlabel.destroy()
@@ -139,6 +141,10 @@ class Run(Frame):
         params = state[command]
 
         self.destroyComponents()
+
+        self.tlabel = ttk.Label(self, text="RUN", font=(
+            'helvetica', '18', 'bold'), bootstyle=INFO)
+        self.tlabel.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
         self.plabel = ttk.Label(self, text="Planet: " + planet.capitalize(),
                                 font=('helvetica', '14'))
