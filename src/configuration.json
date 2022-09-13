@@ -267,8 +267,10 @@
             "help": "mosaic-matchbase",
             "type": "boolean",
             "options": {
-              "trueText": "Yes (1)",
-              "falseText": "No (0)",
+              "trueText": "Yes",
+              "trueValue": "yes",
+              "falseText": "No",
+              "falseValue": "no",
               "default": false
             }
           },
@@ -285,8 +287,10 @@
             "help": "mosaic-coverref",
             "type": "boolean",
             "options": {
-              "trueText": "Yes (1)",
-              "falseText": "No (0)",
+              "trueText": "Yes",
+              "trueValue": "yes",
+              "falseText": "No",
+              "falseValue": "no",
               "default": false
             }
           },
