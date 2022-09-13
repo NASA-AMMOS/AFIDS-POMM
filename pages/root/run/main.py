@@ -77,10 +77,9 @@ class Run(Frame):
             text="STOP", bootstyle=(DANGER))
         self.buttonBack.configure(state="disabled")
 
-        process = ['vicarb', '"' + self.finalCommand + ' ' +
-                   self.upfPrefix + '"', '>&', 'xxlog.log', '&']
-        subprocess.Popen(process, universal_newlines=True,
-                         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process = 'vicarb "' + self.finalCommand + ' ' + self.upfPrefix + '" >& xxlog.log &'
+        subprocess.Popen(process,  universal_newlines=True,
+                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         watchProcess = ['tail', '-f', '--retry', 'xxlog.log']
         wp = subprocess.Popen(watchProcess, universal_newlines=True,
                               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -91,8 +90,7 @@ class Run(Frame):
             'helvetica', '18', 'bold'), bootstyle=INFO)
         self.tlabel.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
-        self.cmdlabel = ttk.Label(self, text=" ".join(
-            process), font=('helvetica', '12', 'bold'))
+        self.cmdlabel = ttk.Label(self, text=process, font=('helvetica', '12', 'bold'))
         self.cmdlabel.place(y=67, relx=0.5, rely=0, anchor=CENTER)
 
         self.text = Text(self, height=28, wrap="none",
@@ -105,7 +103,7 @@ class Run(Frame):
 
     def displayRunningText(self, p):
         lines_iterator = iter(p.stdout.readline, b"")
-        maxLines = 100
+        maxLines = 28
         display = []
         for line in lines_iterator:
             if len(line) > 0 and line != '\r\n':
