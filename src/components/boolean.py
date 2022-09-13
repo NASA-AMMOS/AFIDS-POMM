@@ -1,4 +1,4 @@
-from tkinter import IntVar
+from tkinter import StringVar
 import ttkbootstrap as ttk
 
 from src.components.title import Title
@@ -19,8 +19,6 @@ def Boolean(self, component, startY, parent, command, curVal):
     trueText = 'Yes (1)'
     falseText = 'No (0)'
     if ('options' in component):
-        if ('default' in component['options'] and component['options']['default'] == True):
-            default = 1
         if ('trueText' in component['options']):
             trueText = component['options']['trueText']
         if ('falseText' in component['options']):
@@ -30,10 +28,15 @@ def Boolean(self, component, startY, parent, command, curVal):
         if ('falseValue' in component['options']):
             falseValue = component['options']['falseValue']
 
-    if (curVal is not None):
-        default = int(curVal)
+        if ('default' in component['options'] and component['options']['default'] == True):
+            default = trueValue
+        else:
+            default = falseValue
 
-    boolValue = IntVar()
+    if (curVal is not None):
+        default = curVal
+
+    boolValue = StringVar()
     boolValue.set(default)
 
     def setState(self, *args):
