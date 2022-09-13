@@ -90,24 +90,31 @@ class Run(Frame):
                               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         self.destroyComponents()
-        self.text = Text(self, height=22, wrap="none",
-                         font=('helvetica', '11'),
+
+        self.cmdlabel = ttk.Label(self, text=" ".join(process), font=('helvetica', '12', 'bold'))
+        self.cmdlabel.place(y=67, relx=0.5, rely=0, anchor=CENTER)
+
+        self.text = Text(self, height=28, wrap="none",
+                         font=('helvetica', '12'),
                          undo=False
                          )
 
-        self.text.place(y=160, relx=0.1, relwidth=0.8, anchor=NW)
+        self.text.place(y=96, relx=0.1, relwidth=0.8, anchor=NW)
         self.displayRunningText(wp)
 
     def displayRunningText(self, p):
-        display = ''
         lines_iterator = iter(p.stdout.readline, b"")
-        print(p.stdoud.readline, lines_iterator)
+        maxLines = 100
+        display = []
         for line in lines_iterator:
-            if 'Active' in line:
+            if len(line) > 0 and line != '\r\n':
+                print(line)
+                display.append(line)
+                if len(display) > maxLines:
+                    del(display[0])
                 self.text.delete('1.0', END)
-                self.text.insert(INSERT, display)
-                display = ''
-            display = display + line
+                for d in display:
+                    self.text.insert(INSERT, d)
 
     def backward(self):
         state = self.parent.state.get_state()
@@ -121,6 +128,7 @@ class Run(Frame):
             self.prmlabel.destroy()
             self.v.destroy()
             self.text.destroy()
+            self.cmdlabel.destroy()
         except:
             pass
 

@@ -10,9 +10,9 @@ from components.param import Param
 def MultiText(self, component, startY, parent, command, curParams):
     startY = Title(self, component, startY)
 
-    fontsize = 10
+    fontsize = 11
     viewrows = 8
-    sFrameH = (fontsize + 9) * viewrows
+    sFrameH = (fontsize + 11) * viewrows
 
     if 'param' in component:
         Param(self, component['param'], startY + (sFrameH/2))
