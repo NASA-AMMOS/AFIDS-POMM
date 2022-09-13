@@ -60,21 +60,33 @@
             "type": "string"
           },
           {
+            "param": "wacband",
+            "title": "LRO WAC Band Code",
+            "help": "mapproject-wacband",
+            "type": "number",
+            "options": {
+              "subtype": "integer",
+              "min": 3,
+              "max": 7,
+              "step": 1
+            }
+          },
+          {
             "param": "outpre",
             "title": "PREFIX Filename for Output Products",
             "help": "mapproject-outpre",
             "type": "string"
-          },
-          {
-            "param": "mpix",
-            "title": "Output Pixel Size (meters/pixel)",
-            "help": "mapproject-mpix",
-            "type": "number"
           }
         ]
       },
       {
         "components": [
+          {
+            "param": "mpix",
+            "title": "Output Pixel Size (meters/pixel)",
+            "help": "mapproject-mpix",
+            "type": "number"
+          },
           {
             "param": "demimg",
             "title": "FULL Directory Path/Filename to Encompassing DEM",

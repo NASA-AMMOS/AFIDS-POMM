@@ -85,7 +85,7 @@ class Run(Frame):
                    self.upfPrefix + '"', '>&', 'xxlog.log', '&']
         subprocess.Popen(process, universal_newlines=True,
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        watchProcess = ['tail', '-f', 'xxlog.log']
+        watchProcess = ['tail', '-f', '--retry', 'xxlog.log']
         wp = subprocess.Popen(watchProcess, universal_newlines=True,
                               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
@@ -101,6 +101,7 @@ class Run(Frame):
     def displayRunningText(self, p):
         display = ''
         lines_iterator = iter(p.stdout.readline, b"")
+        print(p.stdoud.readline, lines_iterator)
         for line in lines_iterator:
             if 'Active' in line:
                 self.text.delete('1.0', END)

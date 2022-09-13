@@ -22,13 +22,26 @@ def Number(self, component, startY, parent, command, curVal):
 
     def setState(self, *args):
         parent.state.set_state(
-            command, component['param'], float(numberValue.get()))
+            command, component['param'], cast(numberValue.get()))
     numberValue.trace('w', setState)
+
+    def cast(val):
+        if val == '':
+            return val
+        if 'options' in component and 'subtype' in component['options'] and component['options']['subtype'] == 'integer':
+            return int(val)
+        else:
+            return float(val)
 
     def validate(action, index, value_if_allowed):
         if value_if_allowed:
             try:
-                float(value_if_allowed)
+                f = cast(value_if_allowed)
+                if 'options' in component and 'min' in component['options'] and 'max' in component['options'] and 'step' in component['options']:
+                    if f >= component['options']['min'] and f <= component['options']['max'] and ((f - component['options']['min']) % component['options']['step']) == 0:
+                        return True
+                    else:
+                        return False
                 return True
             except ValueError:
                 return False
