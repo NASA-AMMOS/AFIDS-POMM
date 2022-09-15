@@ -346,7 +346,7 @@
                   "param": "deltazthresh2",
                   "value": 100.0
                 },
-                { "param": "edgexyth", "value": 70.0 },
+                { "param": "edgexythr", "value": 70.0 },
                 { "param": "minnumzval", "value": 4 },
                 { "param": "waterthresh", "value": 5 },
                 { "param": "watercount", "value": 12 },
@@ -382,23 +382,23 @@
             "options": {
               "items": [
                 {
-                  "param": "lnpminlon",
+                  "param": "inpminlon",
                   "value": 999,
                   "comment": "Left Longitude Degrees; 999=No sub-area"
                 },
                 {
-                  "param": "lnpminlat",
-                  "value": "",
+                  "param": "inpminlat",
+                  "value": 999,
                   "comment": "Bottom Latitude Degrees"
                 },
                 {
-                  "param": "lnpmaxlon",
-                  "value": "",
+                  "param": "inpmaxlon",
+                  "value": 999,
                   "comment": "Right Longitude Degrees"
                 },
                 {
-                  "param": "lnpmaxlat",
-                  "value": "",
+                  "param": "inpmaxlat",
+                  "value": 999,
                   "comment": "Top Latitude Degrees"
                 }
               ]
