@@ -63,3 +63,6 @@ class MapProject(Frame):
         self.page = page
         ComponentRenderer(self, self.parent, self.innerFrame,
                           self.config['pages'][page]['components'], 'MapProject')
+
+    def onRaise(self):
+        self.setPage(self.page)

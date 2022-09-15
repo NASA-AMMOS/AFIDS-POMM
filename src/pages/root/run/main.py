@@ -159,7 +159,7 @@ class Run(Frame):
 
         self.v = Scrollbar(self, orient='vertical')
 
-        self.text = Text(self, height=22, wrap="none",
+        self.text = Text(self, height=25, wrap="none",
                          font=('helvetica', '11'),
                          yscrollcommand=self.v.set
                          )

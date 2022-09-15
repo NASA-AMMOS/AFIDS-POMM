@@ -2,7 +2,7 @@
   "planets": [
     { "name": "Mars", "value": "mars" },
     { "name": "Earth", "value": "earth" },
-    { "name": "The Moon", "value": "moon" }
+    { "name": "The Moon", "value": "luna" }
   ],
   "MapProject": {
     "command": "runtop_map",
@@ -18,15 +18,19 @@
             "type": "radiolist",
             "options": {
               "items": [
-                { "name": "Mars MRO CTX", "value": "ctx", "planet": "mars" },
+                { "name": "Mars MRO CTX", "value": "ctx", "planets": ["mars"] },
                 {
                   "name": "Mars MRO HiRISE",
                   "value": "hirise",
-                  "planet": "mars"
+                  "planets": ["mars"]
                 },
-                { "name": "Mars MEX HRSC", "value": "hrsc", "planet": "mars" },
-                { "name": "Luna LRO NAC", "value": "nac", "planet": "moon" },
-                { "name": "Luna LRO WAC", "value": "wac", "planet": "moon" }
+                {
+                  "name": "Mars MEX HRSC",
+                  "value": "hrsc",
+                  "planets": ["mars"]
+                },
+                { "name": "Luna LRO NAC", "value": "nac", "planets": ["luna"] },
+                { "name": "Luna LRO WAC", "value": "wac", "planets": ["luna"] }
               ]
             }
           },
@@ -100,14 +104,30 @@
             "type": "radiolist",
             "options": {
               "items": [
-                { "name": "Latitude-Longitude", "value": "latitude-longitude" },
+                {
+                  "name": "Latitude-Longitude",
+                  "value": "{planet}_proj_latlon.vic",
+                  "planets": ["luna", "mars"]
+                },
                 {
                   "name": "Equidistant",
-                  "value": "equidistant"
+                  "value": "{planet}_proj_equidistant.vic",
+                  "planets": ["luna", "mars"]
                 },
                 {
                   "name": "Sinusoidal",
-                  "value": "sinusoidal"
+                  "value": "{planet}_proj_sinusoidal.vic",
+                  "planets": ["luna", "mars"]
+                },
+                {
+                  "name": "North Polar Stereographic",
+                  "value": "{planet}_proj_northpole_stereographic.vic",
+                  "planets": []
+                },
+                {
+                  "name": "South Polar Stereographic",
+                  "value": "{planet}_proj_southpole_stereographic.vic",
+                  "planets": []
                 }
               ]
             }

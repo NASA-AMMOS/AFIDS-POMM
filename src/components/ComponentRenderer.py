@@ -14,6 +14,7 @@ from src.components.multitext import MultiText
 def ComponentRenderer(self, parent, frame, components, command):
     state = parent.state.get_state()
     planet = state['core']['planet']
+
     params = None
     if (command):
         params = state[command]

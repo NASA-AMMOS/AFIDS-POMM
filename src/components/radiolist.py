@@ -9,6 +9,8 @@ from src.components.param import Param
 def RadioList(self, component, startY, parent, command, curVal):
     startY = Title(self, component, startY)
 
+    planet = parent.state.get_state()['core']['planet']
+
     sFrameH = min(len(component['options']['items']) * 24, 150)
 
     if 'param' in component:
@@ -36,14 +38,17 @@ def RadioList(self, component, startY, parent, command, curVal):
     for (index, item) in enumerate(component['options']['items']):
         name = item['name']
         value = item['value']
+        planets = item['planets']
         rb = ttk.Radiobutton(
             sFrame, text=name,
             variable=radioValue,
             value=value,
             bootstyle="INFO",
             command=lambda: parent.state.set_state(
-                command, component['param'], radioValue.get())
+                command, component['param'], radioValue.get().replace('{planet}', planet))
         )
+        if planet not in planets:
+            rb.configure(state="disabled")
         #rb.place(y=(index * 30), x=20, relx=0, rely=0)
         rb.grid(row=index, column=0, padx=8, ipady=4, sticky=NW)
 
