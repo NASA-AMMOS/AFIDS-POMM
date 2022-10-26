@@ -1,18 +1,20 @@
+#! /usr/bin/env python
 from tkinter import Tk, PhotoImage, Frame
 import ttkbootstrap as ttk
 import json
+import importlib.resources
 # import ctypes
 # from ctypes import alignment
 
-from src.state import State
+from pomm_ui.state import State
 
-from src.pages.root.splash.main import Splash
-from src.pages.root.planet.main import Planet
-from src.pages.root.command.main import Command
-from src.pages.commands.co_register.main import CoRegister
-from src.pages.commands.map_project.main import MapProject
-from src.pages.commands.mosaic.main import Mosaic
-from src.pages.root.run.main import Run
+from pomm_ui.pages.root.splash.main import Splash
+from pomm_ui.pages.root.planet.main import Planet
+from pomm_ui.pages.root.command.main import Command
+from pomm_ui.pages.commands.co_register.main import CoRegister
+from pomm_ui.pages.commands.map_project.main import MapProject
+from pomm_ui.pages.commands.mosaic.main import Mosaic
+from pomm_ui.pages.root.run.main import Run
 
 # ctypes.windll.shcore.SetProcessDpiAwareness(True)
 
@@ -55,10 +57,10 @@ class App(Tk):
         self.title("POMM")
         self.geometry(f'{scaled(800)}x{scaled(700)}')
         self.resizable(False, True)
-        self.iconphoto(False, PhotoImage(file="src/assets/main-logo.png"))
+        self.iconphoto(False, PhotoImage(data=importlib.resources.open_binary("pomm_ui.assets", "main-logo.png").read()))
 
         # Load config
-        with open('src/configuration.json', 'r') as config:
+        with importlib.resources.open_text('pomm_ui','configuration.json') as config:
             self.config = json.load(config)
 
         # Creating a container
