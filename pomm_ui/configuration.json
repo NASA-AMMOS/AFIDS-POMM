@@ -359,7 +359,7 @@
                 { "param": "pathout", "value": "finalmos" },
                 {
                   "param": "topo",
-                  "value": "opt/afids/data/vdev/etop02nobath.hlf",
+                  "value": "etop02nobath.hlf",
                   "comment": "Earth Land/Mask with positive elevations 1-30000m"
                 },
                 {
@@ -377,19 +377,19 @@
                 { "param": "mars_gridspace", "value": 0.004 },
                 {
                   "param": "marslatlon",
-                  "value": "/data/library/projdef/mars_geographic.prj"
+                  "value": "mars_geographic.prj"
                 },
-                { "param": "mdeg", "value": 59525.0 },
+                { "param": "mdeg", "value": 59275.0 },
                 { "param": "earth_gridspace", "value": 0.004 },
                 {
                   "param": "earthlatlon",
-                  "value": "/data/library/projdef/earth_geographic.prj"
+                  "value": "earth_geographic.prj"
                 },
                 { "param": "edeg", "value": 108000.0 },
                 { "param": "luna_gridspace", "value": "0.004" },
                 {
                   "param": "lunalatlon",
-                  "value": "/data/library/projdef/luna_geographic.prj"
+                  "value": "luna_geographic.prj"
                 },
                 { "param": "ldeg", "value": 30322.2 }
               ]
