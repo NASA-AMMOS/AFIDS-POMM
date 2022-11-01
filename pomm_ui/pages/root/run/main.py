@@ -55,7 +55,7 @@ class Run(Frame):
             ]
             for key, value in params.items():
                 upf.append(str(key) + '=' + str(value))
-            upf = "\n".join(str(x) for x in upf)
+            upf = "\n".join(str(x) for x in upf) + "\n"
 
             self.upfPrefix = "pommui_" + command.lower()
             self.finalCommand = self.parent.config[command]['command']

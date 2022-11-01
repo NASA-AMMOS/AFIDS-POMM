@@ -56,11 +56,12 @@ class App(Tk):
         # Setting up Initial Things
         self.title("POMM")
         self.geometry(f'{scaled(800)}x{scaled(700)}')
-        self.resizable(False, True)
-        self.iconphoto(False, PhotoImage(data=importlib.resources.open_binary("pomm_ui.assets", "main-logo.png").read()))
+        self.resizable(True, True)
+        self.iconphoto(False, PhotoImage(data=importlib.resources.open_binary(
+            "pomm_ui.assets", "main-logo.png").read()))
 
         # Load config
-        with importlib.resources.open_text('pomm_ui','configuration.json') as config:
+        with importlib.resources.open_text('pomm_ui', 'configuration.json') as config:
             self.config = json.load(config)
 
         # Creating a container
