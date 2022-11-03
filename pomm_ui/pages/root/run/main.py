@@ -122,23 +122,22 @@ class Run(Frame):
         self.text.place(y=96, relx=0.1, relwidth=0.8, anchor=NW)
         self.displayRunningText(self.wp)
 
-        while self.mp.poll() is None:
-            time.sleep(2)
-        self.run(finished=True)
-
     def displayRunningText(self, p):
         lines_iterator = iter(p.stdout.readline, b"")
         maxLines = 28
         display = []
-        print(lines_iterator)
-        for line in lines_iterator:
-            if len(line) > 0 and line != '\r\n':
-                display.append(line)
-                if len(display) > maxLines:
-                    del (display[0])
-                self.text.delete('1.0', END)
-                for d in display:
-                    self.text.insert(INSERT, d)
+
+        if (self.mp.poll() is None):
+            for line in lines_iterator:
+                if len(line) > 0 and line != '\r\n':
+                    display.append(line)
+                    if len(display) > maxLines:
+                        del (display[0])
+                    self.text.delete('1.0', END)
+                    for d in display:
+                        self.text.insert(INSERT, d)
+        else:
+            self.run(finished=True)
 
     def backward(self):
         state = self.parent.state.get_state()
