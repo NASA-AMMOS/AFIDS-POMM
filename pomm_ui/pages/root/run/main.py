@@ -1,7 +1,8 @@
 import threading
+import time
 from tkinter import Frame, Scrollbar, Text, CENTER, SW, NW, DISABLED, END, INSERT
 import ttkbootstrap as ttk
-from ttkbootstrap.constants import INFO, DANGER
+from ttkbootstrap.constants import INFO, DANGER, SUCCESS
 
 import subprocess
 
@@ -17,6 +18,9 @@ class Run(Frame):
         Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
         self.isRunning = False
+        self.mp = None
+        self.wp = None
+        self.terminated = False
 
         # Back
         self.buttonBack = ttk.Button(
@@ -37,9 +41,10 @@ class Run(Frame):
 
         TopHelp(self, "run")
 
-    def run(self):
-        if (self.isRunning is False):
+    def run(self, finished=False):
+        if (self.isRunning is False and finished is not True):
             self.isRunning = True
+            self.terminated = False
             state = self.parent.state.get_state()
             planet = state['core']['planet']
             command = state['core']['command']
@@ -67,8 +72,21 @@ class Run(Frame):
             t = threading.Thread(target=self.execute)
             t.start()
         else:
+            text = "RUN"
+            style = INFO
+            if (finished is True and self.terminated is False):
+                text = "DONE! (Click to Rerun)"
+                style = SUCCESS
+                self.mp = None
+                self.wp = None
+            elif (self.mp is not None and self.terminated is False):
+                self.terminated = True
+                self.mp.terminate()
+                if (self.wp is not None):
+                    self.wp.terminate()
+
             self.runButton.configure(
-                text="RUN", bootstyle=(INFO))
+                text=text, bootstyle=(style))
             self.buttonBack.configure(state="enabled")
             self.isRunning = False
 
@@ -79,11 +97,12 @@ class Run(Frame):
 
         process = 'vicarb "' + self.finalCommand + \
             ' ' + self.upfPrefix + '" >& xxlog.log &'
-        subprocess.Popen(process,  universal_newlines=True,
-                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        self.mp = subprocess.Popen(process,  universal_newlines=True,
+                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+
         watchProcess = ['tail', '-f', '--retry', 'xxlog.log']
-        wp = subprocess.Popen(watchProcess, universal_newlines=True,
-                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        self.wp = subprocess.Popen(watchProcess, universal_newlines=True,
+                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         self.destroyComponents()
 
@@ -101,12 +120,17 @@ class Run(Frame):
                          )
 
         self.text.place(y=96, relx=0.1, relwidth=0.8, anchor=NW)
-        self.displayRunningText(wp)
+        self.displayRunningText(self.wp)
+
+        while self.mp.poll() is None:
+            time.sleep(2)
+        self.run(finished=True)
 
     def displayRunningText(self, p):
         lines_iterator = iter(p.stdout.readline, b"")
         maxLines = 28
         display = []
+        print(lines_iterator)
         for line in lines_iterator:
             if len(line) > 0 and line != '\r\n':
                 display.append(line)
