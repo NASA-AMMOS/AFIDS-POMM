@@ -77,13 +77,15 @@ class Run(Frame):
             if (finished is True and self.terminated is False):
                 text = "DONE! (Click to Rerun)"
                 style = SUCCESS
-                self.mp = None
-                self.wp = None
             elif (self.mp is not None and self.terminated is False):
                 self.terminated = True
+
+            if (self.mp is not None):
                 self.mp.terminate()
-                if (self.wp is not None):
-                    self.wp.terminate()
+                self.mp = None
+            if (self.wp is not None):
+                self.wp.terminate()
+                self.wp = None
 
             self.runButton.configure(
                 text=text, bootstyle=(style))
@@ -127,17 +129,17 @@ class Run(Frame):
         maxLines = 28
         display = []
 
-        if (self.mp.poll() is None):
-            for line in lines_iterator:
-                if len(line) > 0 and line != '\r\n':
-                    display.append(line)
-                    if len(display) > maxLines:
-                        del (display[0])
-                    self.text.delete('1.0', END)
-                    for d in display:
-                        self.text.insert(INSERT, d)
-        else:
-            self.run(finished=True)
+        for line in lines_iterator:
+            if len(line) > 0 and line != '\r\n':
+                display.append(line)
+                if len(display) > maxLines:
+                    del (display[0])
+                self.text.delete('1.0', END)
+                for d in display:
+                    self.text.insert(INSERT, d)
+            if (self.mp is not None and self.mp.poll() is not None):
+                time.sleep(2)
+                self.run(finished=True)
 
     def backward(self):
         state = self.parent.state.get_state()
