@@ -1,5 +1,6 @@
 import threading
 import time
+import sys
 from tkinter import Frame, Scrollbar, Text, CENTER, SW, NW, DISABLED, END, INSERT
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import INFO, DANGER, SUCCESS
@@ -69,10 +70,11 @@ class Run(Frame):
             f.write(upf)
             f.close()
 
-            t = threading.Thread(target=self.execute)
+            t = threading.Thread(target=self.execute, daemon=True)
             t.start()
         else:
             self.parent.destroy()
+            sys.exit()
 
     def execute(self):
         self.runButton.configure(
