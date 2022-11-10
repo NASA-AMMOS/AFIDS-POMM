@@ -41,8 +41,8 @@ class Run(Frame):
 
         TopHelp(self, "run")
 
-    def run(self, finished=False):
-        if (self.isRunning is False and finished is not True):
+    def run(self):
+        if (self.isRunning is False):
             self.isRunning = True
             self.terminated = False
             state = self.parent.state.get_state()
@@ -72,29 +72,11 @@ class Run(Frame):
             t = threading.Thread(target=self.execute)
             t.start()
         else:
-            text = "RUN"
-            style = INFO
-            if (finished is True and self.terminated is False):
-                text = "DONE! (Click to Rerun)"
-                style = SUCCESS
-            elif (self.mp is not None and self.terminated is False):
-                self.terminated = True
-
-            if (self.mp is not None):
-                self.mp.terminate()
-                self.mp = None
-            if (self.wp is not None):
-                self.wp.terminate()
-                self.wp = None
-
-            self.runButton.configure(
-                text=text, bootstyle=(style))
-            self.buttonBack.configure(state="enabled")
-            self.isRunning = False
+            self.parent.destroy()
 
     def execute(self):
         self.runButton.configure(
-            text="STOP", bootstyle=(DANGER))
+            text="CLOSE APPLICATION (and/or wait until command succeeds or fails)", bootstyle=(DANGER))
         self.buttonBack.configure(state="disabled")
 
         process = 'vicarb "' + self.finalCommand + \
@@ -109,7 +91,7 @@ class Run(Frame):
         self.destroyComponents()
 
         self.tlabel = ttk.Label(self, text="RUNNING", font=(
-            'helvetica', '18', 'bold'), bootstyle=INFO)
+            'helvetica', '18', 'bold'), bootstyle=SUCCESS)
         self.tlabel.place(y=32, relx=.5, rely=0, anchor=CENTER)
 
         self.cmdlabel = ttk.Label(
@@ -137,9 +119,6 @@ class Run(Frame):
                 self.text.delete('1.0', END)
                 for d in display:
                     self.text.insert(INSERT, d)
-            if (self.mp is not None and self.mp.poll() is not None):
-                time.sleep(2)
-                self.run(finished=True)
 
     def backward(self):
         state = self.parent.state.get_state()
