@@ -3,12 +3,11 @@
 
 <div align="center">
 
-AFIDS-POMM
 [INSERT YOUR LOGO IMAGE HERE (IF APPLICABLE)]
 <!-- ☝️ Replace with your logo (if applicable) via ![](https://uri-to-your-logo-image) ☝️ -->
 <!-- ☝️ If you see logo rendering errors, make sure you're not using indentation, or try an HTML IMG tag -->
 
-<h1 align="center">[INSERT YOUR REPO / PROJ NAME HERE]</h1>
+<h1 align="center">[AFIDS-POMM]</h1>
 <!-- ☝️ Replace with your repo name ☝️ -->
 
 </div>
