@@ -22,21 +22,16 @@ automation of planetary orbital mosaicking and mapping requirements.</pre>
 <!-- ☝️ Add badges via: https://shields.io e.g. ![](https://img.shields.io/github/your_chosen_action/your_org/your_repo) ☝️ -->
 POMM is designed to provide the planetary scientist, student, and enthusiast with easy-to-use tools that perform
 basic functions necessary for most satellite mapping and analysis studies. 
-
 <br>
 <div align="center">
 <img width="300" alt="image" src="https://user-images.githubusercontent.com/28875376/224439303-41697f09-3e90-4d7d-9584-9580822558a0.png">
 </div>
 <br>
-  
+
 POMM was funded by the <a href="https://ammos.nasa.gov/">Advanced Multi-Mission Operations System (AMMOS)</a> which supports NASA robotic missions with tools for planetary exploration, including Earth and space science. Available AMMOS tools are described in the online AMMOS catalog. AMMOS is managed by the Multi-Mission Ground Systems (MGSS), a division of the NASA Interplanetary Network Directorate. 
 
-
-<br>
-<div align="center">
 <a href="https://github.com/nasa-ammos/" rel="NASA AMMOS">![NASA Ammos](https://avatars.githubusercontent.com/u/37851411?s=200&v=4)</a>
-</div>
-<br>
+
 <!-- ☝️ Replace with a more detailed description of your repository, including why it was made and whom its intended for.  ☝️ -->
 
 <!-- example links>
@@ -45,9 +40,9 @@ POMM was funded by the <a href="https://ammos.nasa.gov/">Advanced Multi-Mission 
 
 ## Features
 
-* The ability to co-register (stack) multiple images over the same location for time series analysis;
-* Mosaic multiple adjacent images to create large-area base map coverages and regional overviews; and
-* Create map-projected orbital satellite images from selected sensors and bands provided in raw PDS format.
+* The ability to co-register (stack) multiple images over the same location for time series analysis
+* Mosaic multiple adjacent images to create large-area base map coverages and regional overviews
+* Create map-projected orbital satellite images from selected sensors and bands provided in raw PDS format
 
 <br>
 <div align="center">
@@ -74,8 +69,6 @@ the following mission sensors:
 * [Quick Start](#quick-start)
 * [Changelog](#changelog)
 * [FAQ](#frequently-asked-questions-faq)
-* [Contributing Guide](#contributing)
-* [License](#license)
 * [Support](#support)
 
 ## Quick Start
@@ -90,13 +83,13 @@ This guide below provides a quick way to get started with AFIDS-POMM. Please see
 
 ### Setup Instructions
 
-Stay tuned. Will be posted in May 2023 when AFIDS-POMM download will be available.
+* Stay tuned. Will be posted in May 2023 when AFIDS-POMM download will be available.
    
 <!-- ☝️ Replace with a numbered list of how to set up your software prior to running ☝️ -->
 
 ### Run Instructions
 
-Stay tuned. Will be posted in May 2023 when AFIDS-POMM download will be available.
+* Stay tuned. Will be posted in May 2023 when AFIDS-POMM download will be available.
 
 <!-- ☝️ Replace with a numbered list of your run instructions, including expected results ☝️ -->
 
