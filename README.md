@@ -77,19 +77,19 @@ This guide below provides a quick way to get started with AFIDS-POMM. Please see
 
 ### Requirements
 
-* Stay tuned. Will be posted in May 2023 when AFIDS-POMM download will be available.
+* Stay tuned. Will be posted in May 2023 when AFIDS-POMM docker image download will be available.
   
 <!-- ☝️ Replace with a numbered list of your requirements, including hardware if applicable ☝️ -->
 
 ### Setup Instructions
 
-* Stay tuned. Will be posted in May 2023 when AFIDS-POMM download will be available.
+* Stay tuned. Will be posted in May 2023 when AFIDS-POMM docker image download will be available.
    
 <!-- ☝️ Replace with a numbered list of how to set up your software prior to running ☝️ -->
 
 ### Run Instructions
 
-* Stay tuned. Will be posted in May 2023 when AFIDS-POMM download will be available.
+* Stay tuned. Will be posted in May 2023 when AFIDS-POMM docker image download will be available.
 
 <!-- ☝️ Replace with a numbered list of your run instructions, including expected results ☝️ -->
 
