@@ -73,7 +73,7 @@ the following mission sensors:
 
 ## Quick Start
 
-This guide below provides a quick way to get started with AFIDS-POMM. Please see the AFIDS-POMM User Guide for a more comprehensive guide.
+This guide below provides a quick way to get started with AFIDS-POMM. Please see the <a href="https://github.com/NASA-AMMOS/AFIDS-POMM/tree/main/documentation">AFIDS-POMM User Guide</a> for a more comprehensive guide.
 
 ### Requirements
 
