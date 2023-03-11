@@ -95,7 +95,7 @@ This guide below provides a quick way to get started with AFIDS-POMM. Please see
 
 ## Changelog
 
-See our [releases page] for our key versioned releases. Our first downloadable release will be posted in May 2023.
+See our <a href="https://github.com/NASA-AMMOS/AFIDS-POMM/releases/">releases page</a> for our versioned releases. Our first downloadable docker release will be posted in May 2023.
 
 <!-- ☝️ Replace with links to your changelog and releases page ☝️ -->
 
