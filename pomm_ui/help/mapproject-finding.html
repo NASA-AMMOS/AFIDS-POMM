@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="assets/help/help.css">
+</head>
+<body>
+    <h1>Map-Projecting - Finding Planetary Images for Projection</h1>
+    <p>The following websites can be used to find and download raw PDS imagery. Note that the imagery needs to be copied to the Linux cpu hosting POMM. If your browser downloads to a Windows or Mac computer, the files will need to be uploaded to Linux. The general procedure is to navigate to your "downloads" directory and open a terminal (command prompt) window. Then use "cp" (copy command; or "scp" secure copy command) to upload to file to the Linux box, for example:</p>
+    <ul>
+        <li>
+            <code>cp *.IMG "username@linux.cpu:/data/mywork/raw_image/."</code>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            Find and Download Mars or Luna/Moon Orbital Images:
+            <ul>
+                <li>USGS Pilot:
+                    <a href="https://pilot.wr.usgs.gov/">https://pilot.wr.usgs.gov/</a>
+                    <ul>
+                        <li>Interactive Mars and Earth/Moon image locator. Select
+                            <i>
+                                <b>raw</b>
+                            </i> images, view footprints, and download. Click the bottom left "page" icon for image name.
+                        </li>
+                    </ul>
+                </li>
+                <li>Orbital Data Explorer (PDS Geosciences Node):
+                    <a href="https://ode.rsl.wustl.edu/">https://ode.rsl.wustl.edu/</a>
+                    <ul>
+                        <li>Select "Mars Orbital Explorer" to find Mars CTX, HiRISE, and HRSC
+                            <i>
+                                <b>raw</b>
+                            </i> images, and download.
+                        </li>
+                        <li>Select "Lunar Orbital Data Explorer" to find Moon NAC and WAC
+                            <i>
+                                <b>raw</b>
+                            </i> images and download. (WAC "CC" and NAC "LE/RE" PDS images only.)
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            Other Online Image Sources (you will need to know the name of the desired file):
+            <ul>
+                <li>
+                    HRSC Raw (nd2) Sources: [Can replace "https:" with "ftp:""]
+                    <ul>
+                        <li>
+                            <a href="https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-v3/mexhrs_1001/data">https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-v3/mexhrs_1001/data</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    CTX/HiRISE raw PDS (Level 0) Images:
+                    <ul>
+                        <li>
+                            <a href="https://pds-imaging.jpl.nasa.gov/volumes/mro.html">https://pds-imaging.jpl.nasa.gov/volumes/mro.html</a>. (CTX and HiRISE)
+                        </li>
+                        <li>
+                            <a href="https://pds-imaging.jpl.nasa.gov/data/mro/mars_reconnaissance_orbiter/ctx/">https://pds-imaging.jpl.nasa.gov/data/mro/mars_reconnaissance_orbiter/ctx/</a>. (CTX)
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

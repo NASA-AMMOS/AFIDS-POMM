@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="assets/help/help.css">
+</head>
+<body>
+    <h1>Map-Project</h1>
+    <p>Use this tool to map project a raw/EDR image in PDS format when existing map projected images are not available. Currently supported images include:</p>
+    <ul>
+        <li>Mars:
+            <ul>
+                <li>MRO CTX (Context Camera)</li>
+                <li>MRO HiRISE (HIgh Resolution Imaging Science Experiment) — Red band</li>
+                <li>MEX HRSC (High Resolution Stereo Camera) — nd2 format</li>
+            </ul>
+        </li>
+        <li>Luna/Moon:
+            <ul>
+                <li>LRO NAC (Narrow Angle Camera "LE/RE" Uncalibrated format)</li>
+                <li>LRO WAC (Wide Angle Camera "CC" Calibrated format) — COLOR VIS Bands 1-5</li>
+            </ul>
+        </li>
+    </ul>
+    <p>POMM uses the GLAS/RSM (Replacement Sensor Model) camera model for geometric map projection, and ISIS3 software for radiometric calibration. An optional high resolution DEM model may be provided for terrain correction or a standard global DEM model used by default. Three output map projection choices are available. Note that NAIF SPICE kernels are required for ephemeris processing and are automatically downloaded as needed except for MEX/HRSC, which requires a manual download (instructions provided).</p>
+</body>
+</html>

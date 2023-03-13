@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="assets/help/help.css">
+</head>
+<body>
+    <h3>LAT/LON Output Sub-Area Box</h3>
+    <p>The default value (999) creates an output mosaic with boundaries defined by the outer edges of (all) the input orbital images. These four parameters are used to define an exact Latitude and Longitude boundary (for the output mosaic) which may be larger or smaller than the actual input image coverage. The parameters specify the top and bottom latitudes, and the left and right longitudes. Image pixels (if any) outside the lat/lon boundaries are removed. This will produce data gaps if (optionally) matching to a larger existing orthobase.</p>
+    <ul>
+        Examples:
+        <li>inpminlon=999 (default; acquire lat/lon dimensions from input orbital images)</li>
+        <li>
+            <i>OR</i>
+        </li>
+        <li>inpminlon=76.3</li>
+        <li>inpminlat=17.6</li>
+        <li>inpmaxlon=78.3</li>
+        <li>inpmaxlat=19.6</li>
+    </ul>
+</body>
+</html>

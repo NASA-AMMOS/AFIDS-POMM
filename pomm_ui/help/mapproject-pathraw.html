@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="assets/help/help.css">
+</head>
+<body>
+    <h2>pathraw</h2>
+    <h3>HiRISE FULL Directory Path to PDS Input Focal Plane Images (HiRISE only)</h3>
+    <p>
+        Browse to, or enter the path to a local Linux directory containing the input HiRISE focal plane images. Example path:
+    </p>
+    <ul>
+        <li>/data/myfiles/mars/hirise_pds</li>
+    </ul>
+    <p>Raw PDS HiRISE imagery consists of (up to) 10 focal planes (0-9), each split into two parts (0/1; both parts are required). (Set 9 is usually excluded because of severe degradation.) FPA Set 0 must always be the starting set. For example, an input collection might specify Sets 0-3 or 0-8, but a collection of Sets 2-4 would be invalid. Only the Red band is currently supported. An example HiRISE input collection for Sets 0-2:</p>
+    <ul>
+        <li>PSP_002387_1985_RED0_0.IMG</li>
+        <li>PSP_002387_1985_RED0_1.IMG</li>
+        <li>PSP_002387_1985_RED1_0.IMG</li>
+        <li>PSP_002387_1985_RED1_1.IMG</li>
+        <li>PSP_002387_1985_RED2_0.IMG</li>
+        <li>PSP_002387_1985_RED2_1.IMG</li>
+    </ul>
+    <p>The path must be a complete (full/absolute/canonical) specification through your file system, be less than 250 characters, and follow standard Linux filename conventions.</p>
+</body>
+</html>
