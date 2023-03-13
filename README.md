@@ -88,8 +88,32 @@ This guide below provides a quick way to get started with AFIDS-POMM. Please see
 
 ### Setup Instructions
 
-* Stay tuned. Will be posted in May 2023 when AFIDS-POMM docker image download will be available.
-   
+POMM is distributed as a Docker image, which can be used to run the POMM
+software. The docker image is available at 'placeholder'.
+
+#### ISIS data
+
+POMM makes use of the [ISIS](https://isis.astrogeology.usgs.gov/7.0.0/UserStart/index.html) software. The software is included in the POMM Docker image,
+but because of its size the support data for ISIS needs to be downloaded
+separately.
+
+There are two sets of [ISIS data](https://github.com/DOI-USGS/ISIS3#the-isis-data-area). One set is the specific data needed to process an image (e.g., the
+specific [NAIF](https://naif.jpl.nasa.gov/naif/) kernels to support the
+time range of the data), POMM automatically downloads this as needed. There
+is also a set of "core" data needed for all ISIS processing, this needs to
+be downloaded and then provided to the Docker image for its use (e.g., 
+as a [Docker volume](https://docs.docker.com/storage/volumes/)).
+
+The ISIS data is downloaded using [Rclone](https://rclone.org), this should
+be installed on your system (e.g. install the yum package "rclone" on a
+Red Hat system).
+
+The directions for downloading can be found on the 
+[ISIS download directions](https://github.com/DOI-USGS/ISIS3#isis-spice-web-service). In addition the file "rclone.conf" should be copied to this directory.
+As a convenience, there is a [isis_data_download.sh](isis_data_download.sh) script that can be run to download this data.
+
+    ./isis_data_download.sh <directory to place data>
+
 <!-- ☝️ Replace with a numbered list of how to set up your software prior to running ☝️ -->
 
 ### Run Instructions
