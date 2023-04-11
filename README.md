@@ -91,6 +91,24 @@ This guide below provides a quick way to get started with AFIDS-POMM. Please see
 POMM is distributed as a Docker image, which can be used to run the POMM
 software. The docker image is available at 'placeholder'.
 
+#### POMM Ancillary Data Download
+
+The POMM mosaicking and co-registration tools have all their required ancillary data built-in to the docker. However, the map projection tools require a planetary DEM (elevation/height) model and Sensor-base SPICE Kernel information, which must be obtained from external sources.
+
+#### DEM Data
+
+Global Mars and Lunar/Moon elevation models can be downloaded from the following locations. Because these are large files, be sure to include available restart options, for example, use “—continue” with wget, or “-C” with curl.
+
+#. [Global MARS DEM](https://planetarymaps.usgs.gov/mosaic/Mars/HRSC_MOLA_Blend/Mars_HRSC_MOLA_BlendDEM_Global_200mp_v2.tif) (11G)
+
+#. [Global Lunar DEM](https://planetarymaps.usgs.gov/mosaic/Lunar_LRO_LOLA_Global_LDEM_118m_Mar2014.tif) (8G)
+
+#. [Higher resolution Lunar DEM](https://planetarymaps.usgs.gov/mosaic/LolaKaguya_Topo/Lunar_LRO_LOLAKaguya_DEMmerge_60N60S_512ppd.tif) (22G)
+
+The files are downloaded in “bigtiff” format, which should be converted to VICAR format for ease of use:
+
+    gdal_translate -of VICAR <input>.tif <output>.vic
+
 #### ISIS data
 
 POMM makes use of the [ISIS](https://isis.astrogeology.usgs.gov/7.0.0/UserStart/index.html) software. The software is included in the POMM Docker image,
