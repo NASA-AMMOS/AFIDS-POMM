@@ -99,11 +99,11 @@ The POMM mosaicking and co-registration tools have all their required ancillary 
 
 Global Mars and Lunar/Moon elevation models can be downloaded from the following locations. Because these are large files, be sure to include available restart options, for example, use “—continue” with wget, or “-C” with curl.
 
-#. [Global MARS DEM](https://planetarymaps.usgs.gov/mosaic/Mars/HRSC_MOLA_Blend/Mars_HRSC_MOLA_BlendDEM_Global_200mp_v2.tif) (11G)
+- [Global MARS DEM](https://planetarymaps.usgs.gov/mosaic/Mars/HRSC_MOLA_Blend/Mars_HRSC_MOLA_BlendDEM_Global_200mp_v2.tif) (11G)
 
-#. [Global Lunar DEM](https://planetarymaps.usgs.gov/mosaic/Lunar_LRO_LOLA_Global_LDEM_118m_Mar2014.tif) (8G)
+- [Global Lunar DEM](https://planetarymaps.usgs.gov/mosaic/Lunar_LRO_LOLA_Global_LDEM_118m_Mar2014.tif) (8G)
 
-#. [Higher resolution Lunar DEM](https://planetarymaps.usgs.gov/mosaic/LolaKaguya_Topo/Lunar_LRO_LOLAKaguya_DEMmerge_60N60S_512ppd.tif) (22G)
+- [Higher resolution Lunar DEM](https://planetarymaps.usgs.gov/mosaic/LolaKaguya_Topo/Lunar_LRO_LOLAKaguya_DEMmerge_60N60S_512ppd.tif) (22G)
 
 The files are downloaded in “bigtiff” format, which should be converted to VICAR format for ease of use:
 
