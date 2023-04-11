@@ -78,7 +78,7 @@ POMM was funded by the Advanced Multi-Mission Operations System (AMMOS) which su
 
 ## Quick Start
 
-This guide below provides a quick way to get started with AFIDS-POMM. Please see the <a href="https://github.com/NASA-AMMOS/AFIDS-POMM/tree/main/documentation">AFIDS-POMM User Guide</a> for a more comprehensive guide.
+This guide below provides a quick way to get started with AFIDS-POMM. Please see the [AFIDS-POMM User Guide](./documentation/POMM_AFIDS_User_Guide_v1.pdf) for a more comprehensive guide.
 
 ### Requirements
 
@@ -117,6 +117,11 @@ As a convenience, there is a [isis_data_download.sh](isis_data_download.sh) scri
 <!-- ☝️ Replace with a numbered list of how to set up your software prior to running ☝️ -->
 
 ### Run Instructions
+
+Please see [Docker Quick Start](./documentation/POMM_Docker_Quick_Start.pdf)
+for directions on using the docker image. Also see 
+[Docker GUI Appendum](./documentation/POMM_Docker_GUI_Addendum.pdf) for
+information on using the GUI app.
 
 * Stay tuned. Will be posted in May 2023 when AFIDS-POMM docker image download will be available.
 
