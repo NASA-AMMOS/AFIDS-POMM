@@ -80,16 +80,12 @@ POMM was funded by the Advanced Multi-Mission Operations System (AMMOS) which su
 
 This guide below provides a quick way to get started with AFIDS-POMM. Please see the [AFIDS-POMM User Guide](./documentation/POMM_AFIDS_User_Guide_v1.pdf) for a more comprehensive guide.
 
-### Requirements
-
-* Stay tuned. Will be posted in May 2023 when AFIDS-POMM docker image download will be available.
-  
 <!-- ☝️ Replace with a numbered list of your requirements, including hardware if applicable ☝️ -->
 
 ### Setup Instructions
 
 POMM is distributed as a Docker image, which can be used to run the POMM
-software. The docker image is available at 'placeholder'.
+software. The docker image is available at the [releases page](https://github.com/NASA-AMMOS/AFIDS-POMM/releases).
 
 #### POMM Ancillary Data Download
 
@@ -141,21 +137,18 @@ for directions on using the docker image. Also see
 [Docker GUI Appendum](./documentation/POMM_Docker_GUI_Addendum.pdf) for
 information on using the GUI app.
 
-* Stay tuned. Will be posted in May 2023 when AFIDS-POMM docker image download will be available.
-
 <!-- ☝️ Replace with a numbered list of your run instructions, including expected results ☝️ -->
 
 ## Changelog
 
-See our <a href="https://github.com/NASA-AMMOS/AFIDS-POMM/releases/">releases page</a> for our versioned releases. Our first downloadable docker release will be posted in May 2023.
+See our <a href="https://github.com/NASA-AMMOS/AFIDS-POMM/releases/">releases page</a> for our versioned releases. 
 
 <!-- ☝️ Replace with links to your changelog and releases page ☝️ -->
 
 ## Frequently Asked Questions (FAQ)
 Q: When will AFIDS-POMM be available?
 
-A: The first AFIDS-POMM downloadable docker release will be available in May 2023 in this repo. This repo is intended to house the docker releases of AFIDS-POMM.
-
+A: The first AFIDS-POMM downloadable docker release has been posted in April 2023 and is available now. 
 
 Q: Where can I find the AFIDS POMM source code?
 
