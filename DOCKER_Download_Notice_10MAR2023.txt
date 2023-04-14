@@ -1,4 +1,0 @@
-Thank you for your interest in the AFIDS-POMM (Planetary Mosaicking and Mapping) docker.
-The docker is currently under review and testing, and is expected to be available for download in May 2023 or earlier.
-Please check back then.
-Thank You.
